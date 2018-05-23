@@ -1,0 +1,65 @@
+"{ {
+}" }
+\" "
+
+
+	$temp_uid = array(    
+		2915154, //aji
+	    2885971, //filar
+	    2889556, //selamat
+	    1065481, //enye
+	    1067651, //bala
+	    2902466 //indra
+	);
+	// // get data from internet
+	// $tempArray = array();
+	// for( $w = 1; $w <= 38; $w++){
+	// 	$url = 'https://fantasy.premierleague.com/drf/entry/2902466/event/'.$w.'/picks';
+	// 	$response = file_get_contents($url);
+	// 	array_push($tempArray, $response);
+
+	// }
+	// $txt = json_encode($tempArray);
+	// $myfile = fopen("2902466.json", "w") or die("Unable to open file!");
+	// fwrite($myfile, $txt);
+	// fclose($myfile);
+
+	// // read file
+	// $myfile = fopen("2902466.json", "r") or die("Unable to open file!");
+	// $val_2902466 = fread($myfile,filesize("2902466.json"));
+	// $val_2902466 = str_replace('"{', '{', $val_2902466);
+	// $val_2902466 = str_replace('}"', '}', $val_2902466);
+	// $val_2902466 = str_replace('\\"', '"', $val_2902466);
+
+	// //rewrite after fixing
+	// $myfile = fopen("2902466.json", "w") or die("Unable to open file!");
+	// fwrite($myfile, $val_2902466);
+	// fclose($myfile);
+	// echo $val_2902466;
+	
+	// die();
+
+	// die();
+	// var_dump($temp_points);
+	// echo json_encode($val_2915154[0]->entry_history->points);die();
+
+	<link rel="stylesheet" href="bootstrap.min.css">
+<script src="Chart.bundle.js"></script>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <canvas id="canvas"></canvas>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+
+
+</script>
+
+<script src="jquery-3.3.1.min.js"></script>
+
+<script src="pl.js"></script>
