@@ -1,4 +1,15 @@
+<?php
+require("api/id.php");
 
+$url = 'https://fantasy.premierleague.com/drf/leagues-classic-standings/'.$id_liga;
+$headers = get_headers($url);
+$status = substr($headers[0], 9, 3);
+if( $status === "200" ){
+    $response = file_get_contents($url);
+    $txt = (object) json_decode($response);
+
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -9,7 +20,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Cete Champions | Liga Low Profile</title>
+    <title><?= $txt->league->name ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -23,32 +34,42 @@
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">Cete Champions</h3>
+          <h3 class="masthead-brand"><?= $txt->league->name ?></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
             <a class="nav-link" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/total-point-per-week.php">Total Point</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Kali Juara Klasemen</a>
-            <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Kali Noob Klasemen</a>
+            <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Kali Underdog Klasemen</a>
           </nav>
         </div>
       </header>
       
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">Liga Low Profile 2017-2018</h1>
-        <p class="lead">1.Aji</p>
-        <p class="lead">2.Filar</p>
-        <p class="lead">3.Selamat</p>
-        <p class="lead">4.Enye</p>
-        <p class="lead">5.Bala</p>
-        <p class="lead">6.Indra</p>
+        <table class="table lead">
+        <tr>
+          <th>Rank</th>
+          <th class="text-left">Club Name</th>
+          <th>Last Point</th>
+          <th>Total Point</th>
+        </tr>
+        <?php 
+          foreach( $txt->standings->results as $k => $v){
+            echo "<tr>";
+            echo "<td>".$v->rank."</td>";
+            echo "<td class=\"text-left\">".$v->entry_name."</td>";
+            echo "<td>".$v->event_total."</td>";
+            echo "<td>".$v->total."</td>";
+            echo "</tr>";
+          }
+        ?>
+        </table>
       </main>
 		
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Ulasan balik dan statistik para Noob si Cimpley.</p>
-          <p>Sampai jumpa musim depan, NOOB !</p>
+          <p>Monitoring System for Noob</p>
         </div>
       </footer>
     </div>
