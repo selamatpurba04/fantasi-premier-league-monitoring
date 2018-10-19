@@ -1,2 +1,5 @@
 # Fantasi Premier League Monitoring
-Iseng-iseng for fun :D
+- screenshot
+
+![alt text](https://raw.githubusercontent.com/selamatpurba04/fantasi-premier-league-monitoring/master/screencapture.png)
+
