@@ -28,7 +28,7 @@
             <a class="nav-link" href="/total-point-per-week.php">Total Point</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Kali Juara Klasemen</a>
-            <a class="nav-link active" href="/kali-noob-klasemen-per-week.php">Kali Noob Klasemen</a>
+            <a class="nav-link active" href="/kali-noob-klasemen-per-week.php">Kali Underdog Klasemen</a>
           </nav>
         </div>
       </header>
@@ -55,6 +55,7 @@
     <!-- <script src="/assets/js/jquery-3.3.1.slim.min.js"></script> -->
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/id.js"></script>
     <script src="/assets/js/kali-noob-klasemen-per-week.js"></script>
 
   </body>

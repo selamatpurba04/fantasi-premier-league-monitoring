@@ -5,7 +5,7 @@ var pl = function (){
     var config = {
       type: 'line',
       data: {
-        labels: [ 'Aji', 'Filar', 'Selamat', 'Enye', 'Bala', 'Indra' ],
+        labels: temp_name,
         datasets: res
       },
       options: {

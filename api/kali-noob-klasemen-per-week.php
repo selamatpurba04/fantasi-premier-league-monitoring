@@ -19,18 +19,13 @@ if( !empty($temp_array) ){
 		$pointWeek = 0;
 		$temp_points[$i] = array();
 		for( $x = 0; $x < count($temp_uid); $x++){
-			$pointWeek = (int)  $temp_array[$x][$i]->entry_history->total_points;
-			array_push($temp_points[$i], $pointWeek);
+			if( isset($temp_array[$x][$i]) ){
+				$pointWeek = (int)  $temp_array[$x][$i]->entry_history->total_points;
+				array_push($temp_points[$i], $pointWeek);
+			}else{
+				break;
+			}
 		}
-
-		// $res = array(
-		// 	"label" => $temp_name[$x],
-		// 	"backgroundColor" => $temp_color[$x],
-		// 	"borderColor" => $temp_color[$x],
-		// 	"data" => $temp_points,
-		// 	"fill" => false,
-		// );
-		// array_push($result, $res);
 	}
 
 }
@@ -38,19 +33,23 @@ $temp_win_perweek = array();
 if( !empty($temp_points) ){
 
 	for($i = 0; $i < 38; $i++){
-		$min = min($temp_points[$i]);
-		array_push($temp_win_perweek, array_search($min, $temp_points[$i]));
+		if( !empty($temp_points[$i]) ){
+			$min = min($temp_points[$i]);
+			array_push($temp_win_perweek, array_search($min, $temp_points[$i]));
+		}
 	}
 
 }
 
 $temp_result = array(
-	0,0,0,0,0,0
+	0,0,0,0,0,0,0
 );
 if( !empty($temp_win_perweek) ){
 
 	for($i = 0; $i < 38; $i++){
-		$temp_result[$temp_win_perweek[$i]] += 1;
+		if( isset($temp_win_perweek[$i]) ){
+			$temp_result[$temp_win_perweek[$i]] += 1;
+		}
 	}
 
 }

@@ -69,7 +69,11 @@ if( $status === "200" ){
 		
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Monitoring System for Noob</p>
+          <p id="status">Monitoring System for Noob</p>
+          <p>
+            <img id="loading_img" height="35" src="/assets/images/loading-small.gif">
+            <img id="done_img" height="35" src="/assets/images/done.png">
+          </p>
         </div>
       </footer>
     </div>
@@ -78,9 +82,10 @@ if( $status === "200" ){
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/get-resource.js"></script>
   </body>
 </html>
 

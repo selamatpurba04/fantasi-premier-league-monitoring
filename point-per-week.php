@@ -28,7 +28,7 @@
             <a class="nav-link" href="/total-point-per-week.php">Total Point</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Kali Juara Klasemen</a>
-            <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Kali Noob Klasemen</a>
+            <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Kali Underdog Klasemen</a>
           </nav>
         </div>
       </header>
