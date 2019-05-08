@@ -55,7 +55,7 @@ if( !empty($temp_win_perweek) ){
 }
 
 $res = array(
-	"label" => "Kali Noob",
+	"label" => "Kali Underdog",
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result,

@@ -2,40 +2,30 @@ var pl = function (){
 
   var afterReq = function( res ){
 
+    var barChartData = {
+      labels: temp_name,
+      datasets: res.data
+    };
+
     var config = {
-      type: 'line',
-      data: {
-        labels: temp_name,
-        datasets: res
-      },
+      type: 'bar',
+      data: barChartData,
       options: {
-        responsive: true,
         title: {
           display: true,
-          text: 'Kali Juara'
+          text: 'Most Picked Captain'
         },
         tooltips: {
           mode: 'index',
-          intersect: false,
+          intersect: false
         },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
+        responsive: true,
         scales: {
           xAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Para Noob'
-            }
+            stacked: true,
           }],
           yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Kali Hoki'
-            }
+            stacked: true
           }]
         }
       }
@@ -48,14 +38,12 @@ var pl = function (){
         lazy: false,
         easing: 'easeOutBounce'
     });
-
-
   }
 
   var getAjax = function(){
 
     $.ajax({
-      url: "/api/kali-juara-klasemen-per-week.php",
+      url: "/api/most-captain.php",
       dataType: 'JSON',
       type: 'GET'
     }).done( (res) => {

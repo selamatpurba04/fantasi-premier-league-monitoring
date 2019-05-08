@@ -24,13 +24,13 @@
           <h3 class="masthead-brand">Cete Champions</h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="/">Home</a>
-            <a class="nav-link active" href="/point-per-week.php">Point</a>
+            <a class="nav-link" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/total-point-per-week.php">Total</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Juara</a>
             <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Underdog</a>
             <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
-            <a class="nav-link" href="/most-captain.php">MostCaptain</a>
+            <a class="nav-link active" href="/most-captain.php">MostCaptain</a>
           </nav>
         </div>
       </header>
@@ -53,11 +53,12 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/Chart.min.js"></script>
+    <script src="/assets/js/Chart.bundle.js"></script>
     <!-- <script src="/assets/js/jquery-3.3.1.slim.min.js"></script> -->
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/point-per-week.js"></script>
+    <script src="/assets/js/id.js"></script>
+    <script src="/assets/js/most-captain.js"></script>
 
   </body>
 </html>

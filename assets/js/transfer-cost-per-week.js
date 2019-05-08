@@ -5,14 +5,14 @@ var pl = function (){
     var config = {
       type: 'line',
       data: {
-        labels: temp_name,
+        labels: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38 ],
         datasets: res
       },
       options: {
         responsive: true,
         title: {
           display: true,
-          text: 'Kali Juara'
+          text: 'Transfer Cost per Week'
         },
         tooltips: {
           mode: 'index',
@@ -27,14 +27,14 @@ var pl = function (){
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Para Noob'
+              labelString: 'Game Week'
             }
           }],
           yAxes: [{
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Kali Hoki'
+              labelString: 'Minus'
             }
           }]
         }
@@ -49,13 +49,12 @@ var pl = function (){
         easing: 'easeOutBounce'
     });
 
-
   }
 
   var getAjax = function(){
 
     $.ajax({
-      url: "/api/kali-juara-klasemen-per-week.php",
+      url: "/api/transfer-cost-per-week.php",
       dataType: 'JSON',
       type: 'GET'
     }).done( (res) => {

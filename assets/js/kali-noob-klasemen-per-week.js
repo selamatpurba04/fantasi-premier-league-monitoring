@@ -12,7 +12,7 @@ var pl = function (){
         responsive: true,
         title: {
           display: true,
-          text: 'Kali Noob Klasemen per Week'
+          text: 'Kali Underdog'
         },
         tooltips: {
           mode: 'index',
@@ -34,7 +34,7 @@ var pl = function (){
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Kali Cimpley'
+              labelString: 'Kali Underdog'
             }
           }]
         }

@@ -13,7 +13,7 @@ for( $x = 0; $x < count($temp_uid); $x++){
 
 $temp_points = array();
 if( !empty($temp_array) ){
-	for ($i=0; $i < 38; $i++) { 		
+	for ($i=0; $i < 38; $i++) {
 		$pointWeek = 0;
 		$temp_points[$i] = array();
 		for( $x = 0; $x < count($temp_uid); $x++){
@@ -27,13 +27,13 @@ if( !empty($temp_array) ){
 	}
 }
 
-$temp_win_perweek = array();
+$temp_goa_perweek = array();
 if( !empty($temp_points) ){
 
 	for($i = 0; $i < 38; $i++){
 		if( !empty($temp_points[$i]) ){
 			$min = min($temp_points[$i]);
-			array_push($temp_win_perweek, array_search($min, $temp_points[$i]));
+			array_push($temp_goa_perweek, array_keys($temp_points[$i], $min));
 		}
 	}
 
@@ -43,11 +43,13 @@ $temp_result = array(
 	0,0,0,0,0,0,0
 );
 
-if( !empty($temp_win_perweek) ){
+if( !empty($temp_goa_perweek) ){
 
 	for($i = 0; $i < 38; $i++){
-		if( isset($temp_win_perweek[$i]) ){
-			$temp_result[$temp_win_perweek[$i]] += 1;
+		if( isset($temp_goa_perweek[$i]) ){
+			foreach ($temp_goa_perweek[$i] as $v) {
+				$temp_result[$v] += 1;
+			}
 		}
 	}
 

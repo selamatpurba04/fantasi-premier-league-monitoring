@@ -25,10 +25,12 @@
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="/">Home</a>
             <a class="nav-link" href="/point-per-week.php">Point</a>
-            <a class="nav-link" href="/total-point-per-week.php">Total Point</a>
+            <a class="nav-link" href="/total-point-per-week.php">Total</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
-            <a class="nav-link active" href="/kali-juara-klasemen-per-week.php">Kali Juara Klasemen</a>
-            <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Kali Underdog Klasemen</a>
+            <a class="nav-link active" href="/kali-juara-klasemen-per-week.php">Juara</a>
+            <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Underdog</a>
+            <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
+            <a class="nav-link" href="/most-captain.php">MostCaptain</a>
           </nav>
         </div>
       </header>
