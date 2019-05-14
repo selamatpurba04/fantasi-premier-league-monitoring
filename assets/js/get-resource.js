@@ -1,7 +1,7 @@
 var pl = function (){
     
     var afterReq = (res) => {
-        if(res.status == "done"){
+        if(res.status){
             $("#done_img").show();
             $("#loading_img").hide();
             $("#status").html("Done");
@@ -11,14 +11,15 @@ var pl = function (){
     }
 
     var getAjax = function(){
-        
-        $.ajax({
-            url: "/api/get-resource.php",
-            dataType: 'JSON',
-            type: 'GET'
-        }).done( (res) => {
-            afterReq(res);
-        });
+        setTimeout( function(){
+            $.ajax({
+                url: "/api/get-resource.php",
+                dataType: 'JSON',
+                type: 'GET'
+            }).done( (res) => {
+                afterReq(res);
+            })
+        }, 1500)
   
     }
   
