@@ -1,5 +1,21 @@
 var pl = function (){
 
+  var getMonth = function( num ){
+    let listMonth = [
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May"
+    ];
+
+    return listMonth[num];
+  }
   var afterReq = function( res, arGW ){
 
     var config = {
@@ -12,7 +28,7 @@ var pl = function (){
         responsive: true,
         title: {
           display: true,
-          text: 'Total Point per Week'
+          text: 'Point per Week'
         },
         tooltips: {
           mode: 'index',
@@ -54,16 +70,16 @@ var pl = function (){
   var getAjax = function(){
 
     $.ajax({
-      url: "/api/total-point-per-week.php",
+      url: "/api/point-per-month.php",
       dataType: 'JSON',
       type: 'GET'
     }).done( (res) => {
       let gw = res[0].data.length;
       let arGW = []
-      for(var i = 1; i <= gw; i++){
-        arGW.push(i)
+      for(var i = 0; i < gw; i++){
+        arGW.push(getMonth(i))
       }
-    
+      
       afterReq(res, arGW);
     });
 

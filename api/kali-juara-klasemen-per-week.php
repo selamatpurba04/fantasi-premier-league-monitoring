@@ -15,7 +15,7 @@ for( $x = 0; $x < count($temp_uid); $x++){
 $temp_points = array();
 if( !empty($temp_array) ){
 
-	for ($i=0; $i < 38; $i++) { 
+	for ($i=0; $i < 38; $i++) {
 		
 		$pointWeek = 0;
 		$temp_points[$i] = array();
@@ -44,7 +44,7 @@ if( !empty($temp_points) ){
 }
 
 $temp_result = array(
-	0,0,0,0,0,0,0
+	0,0,0,0,0,0,0,0
 );
 if( !empty($temp_win_perweek) ){
 

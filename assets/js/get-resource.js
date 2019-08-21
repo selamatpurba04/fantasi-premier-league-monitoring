@@ -12,13 +12,14 @@ var pl = function (){
 
     var getAjax = function(){
         setTimeout( function(){
-            $.ajax({
-                url: "/api/get-resource.php",
-                dataType: 'JSON',
-                type: 'GET'
-            }).done( (res) => {
-                afterReq(res);
-            })
+            // $.ajax({
+            //     url: "/api/get-resource.php",
+            //     dataType: 'JSON',
+            //     type: 'GET'
+            // }).done( (res) => {
+            //     afterReq(res);
+            // })
+            afterReq({status : true});
         }, 1500)
   
     }

@@ -13,8 +13,8 @@ for( $x = 0; $x < count($temp_uid); $x++){
 	$val = fread($myfile,filesize("../assets/data/".$temp_uid[$x].".json"));
 	$val = (array) json_decode($val);
 
-	$allPlayer = fopen( "../assets/data/allPlayer.json", "r") or die("Unable to open file!");
-	$valAllPlayer = fread($allPlayer,filesize("../assets/data/allPlayer.json"));
+	$allPlayer = fopen( "../assets/dataStatic/allPlayer.json", "r") or die("Unable to open file!");
+	$valAllPlayer = fread($allPlayer,filesize("../assets/dataStatic/allPlayer.json"));
 	$valAllPlayer = (array) json_decode($valAllPlayer);
 
 	$tempCaptain = [];

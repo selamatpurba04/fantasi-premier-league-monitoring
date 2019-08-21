@@ -33,7 +33,23 @@ if( !empty($temp_points) ){
 	for($i = 0; $i < 38; $i++){
 		if( !empty($temp_points[$i]) ){
 			$min = min($temp_points[$i]);
-			array_push($temp_goa_perweek, array_keys($temp_points[$i], $min));
+			$mostMin = [];
+			$minKeys = array_keys($temp_points[$i], $min);
+			$tempMin = 9999;
+			$tempKeyMin = -1;
+
+			if(count($minKeys) > 1){
+				foreach($minKeys as $v){
+					$tm = $temp_points[$i][$v] - $temp_array[$v][$i]->entry_history->event_transfers_cost;
+					if($tm < $tempMin){
+						$tempMin = $tm;
+						$tempKeyMin = $v;
+					}
+				}
+				$minKeys = [$tempKeyMin];
+			}
+			
+			array_push($temp_goa_perweek, $minKeys);
 		}
 	}
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="/assets/images/favicon.ico">
 
     <title>Cete Champions | Liga Low Profile</title>
 
@@ -27,9 +27,9 @@
             <a class="nav-link" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
-            <a class="nav-link" href="/point-per-month.php">Monthly</a>
+            <a class="nav-link active" href="/point-per-month.php">Monthly</a>
             <a class="nav-link" href="/total-point-per-week.php">Total</a>
-            <a class="nav-link active" href="/kali-juara-klasemen-per-week.php">Juara</a>
+            <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Juara</a>
             <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Underdog</a>
             <a class="nav-link" href="/most-captain.php">MostCaptain</a>
           </nav>
@@ -58,8 +58,7 @@
     <!-- <script src="/assets/js/jquery-3.3.1.slim.min.js"></script> -->
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/id.js"></script>
-    <script src="/assets/js/kali-juara-klasemen-per-week.js"></script>
+    <script src="/assets/js/point-per-month.js"></script>
 
   </body>
 </html>

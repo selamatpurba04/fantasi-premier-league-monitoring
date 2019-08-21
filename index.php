@@ -1,13 +1,16 @@
 <?php
 require("api/id.php");
 
-$url = 'https://fantasy.premierleague.com/drf/leagues-classic-standings/'.$id_liga;
-$headers = get_headers($url);
-$status = substr($headers[0], 9, 3);
-if( $status === "200" ){
-    $response = file_get_contents($url);
-    $txt = (object) json_decode($response);
+$url = 'https://fantasy.premierleague.com/api/leagues-classic/'.$id_liga.'/standings/';
+$context = stream_context_create($opts);
 
+$headers = get_headers($url, false, $context);
+$status = substr($headers[0], 9, 3);
+
+if( $status == "200" ){
+  // Open the file using the HTTP headers set above
+  $response = file_get_contents($url, false, $context); 
+  $txt = (object) json_decode($response);
 }
 ?>
 
@@ -36,13 +39,14 @@ if( $status === "200" ){
         <div class="inner">
           <h3 class="masthead-brand"><?= $txt->league->name ?></h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="/">Home</a>
+            
             <a class="nav-link" href="/point-per-week.php">Point</a>
-            <a class="nav-link" href="/total-point-per-week.php">Total</a>
+            <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
+            <a class="nav-link" href="/point-per-month.php">Monthly</a>
+            <a class="nav-link" href="/total-point-per-week.php">Total</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Juara</a>
             <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Underdog</a>
-            <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
             <a class="nav-link" href="/most-captain.php">MostCaptain</a>
           </nav>
         </div>

@@ -12,7 +12,7 @@ for( $x = 0; $x < count($temp_uid); $x++){
 	for ($i=0; $i < count($val); $i++) { 
 		array_push($temp_points, $val[$i]->entry_history->points);
 	}
-
+	
 	$res = array(
 		"label" => $temp_name[$x],
 		"backgroundColor" => $temp_color[$x],
