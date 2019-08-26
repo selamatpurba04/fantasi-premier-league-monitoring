@@ -34,7 +34,7 @@ if( file_exists("../assets/data/".$temp_uid[0].".json") ){
 }
 
 if( ( $existedGW != $ongoingGW ) || ( empty($existedGW) && empty($ongoingGW)) ){
-	foreach( [967889] as $k => $v ){
+	foreach( $temp_uid as $k => $v ){
 		$dir_id = "../assets/data/".$v.".json";
 		// get data from internet
 		$tempArray = array();
