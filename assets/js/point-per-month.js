@@ -33,6 +33,7 @@ var pl = function (){
         tooltips: {
           mode: 'index',
           intersect: false,
+          itemSort: (a, b, data) => b.yLabel - a.yLabel
         },
         hover: {
           mode: 'nearest',

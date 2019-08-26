@@ -2,40 +2,30 @@ var pl = function (){
 
   var afterReq = function( res ){
 
+    var barChartData = {
+      labels: temp_name,
+      datasets: res
+    };
+
     var config = {
-      type: 'line',
-      data: {
-        labels: temp_name,
-        datasets: res
-      },
+      type: 'bar',
+      data: barChartData,
       options: {
-        responsive: true,
         title: {
           display: true,
           text: 'Kali Underdog'
         },
         tooltips: {
           mode: 'index',
-          intersect: false,
+          intersect: false
         },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
+        responsive: true,
         scales: {
           xAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Para Noob'
-            }
+            stacked: true,
           }],
           yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Kali Underdog'
-            }
+            stacked: true
           }]
         }
       }
