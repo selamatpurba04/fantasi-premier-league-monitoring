@@ -29,7 +29,6 @@ if( !empty($temp_array) ){
 
 $temp_goa_perweek = array();
 if( !empty($temp_points) ){
-
 	for($i = 0; $i < 38; $i++){
 		if( !empty($temp_points[$i]) ){
 			$min = min($temp_points[$i]);
@@ -48,27 +47,25 @@ if( !empty($temp_points) ){
 				}
 				$minKeys = [$tempKeyMin];
 			}
-			
 			array_push($temp_goa_perweek, $minKeys);
 		}
+		else
+			break;
 	}
-
 }
 
-$temp_result = array(
-	0,0,0,0,0,0,0
-);
-
+$temp_result = array( 0,0,0,0,0,0,0 );
+$gw = array( [], [], [], [], [] ,[], [], [] );
 if( !empty($temp_goa_perweek) ){
-
 	for($i = 0; $i < 38; $i++){
 		if( isset($temp_goa_perweek[$i]) ){
 			foreach ($temp_goa_perweek[$i] as $v) {
 				$temp_result[$v] += 1;
+				array_push($gw[$v], $i+1);
 			}
-		}
+		}else
+			break;
 	}
-
 }
 
 $res = array(
@@ -76,6 +73,7 @@ $res = array(
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result,
+	"gw" => $gw,
 	"fill" => false,
 );
 array_push($result, $res);

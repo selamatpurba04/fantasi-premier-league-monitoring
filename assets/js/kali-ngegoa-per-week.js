@@ -17,7 +17,14 @@ var pl = function (){
         },
         tooltips: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          callbacks: {
+            footer : function(a, b){
+              if(res[0].gw[a[0].index].length > 0){
+                return "GW: " + res[0].gw[a[0].index].join(", ");
+              }
+            }
+          }
         },
         responsive: true,
         scales: {

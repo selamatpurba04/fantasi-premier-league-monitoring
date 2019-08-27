@@ -21,9 +21,8 @@
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">Cete Champions</h3>
+          <h3 class="masthead-brand"><a href="/">CC 2019/2020</a></h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="/">Home</a>
             <a class="nav-link active" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>

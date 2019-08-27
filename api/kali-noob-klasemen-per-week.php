@@ -29,27 +29,29 @@ if( !empty($temp_array) ){
 	}
 
 }
-$temp_win_perweek = array();
+$temp_noob_perweek = array();
 if( !empty($temp_points) ){
 
 	for($i = 0; $i < 38; $i++){
 		if( !empty($temp_points[$i]) ){
 			$min = min($temp_points[$i]);
-			array_push($temp_win_perweek, array_search($min, $temp_points[$i]));
-		}
+			array_push($temp_noob_perweek, array_search($min, $temp_points[$i]));
+		}else
+			break;
 	}
 
 }
 
-$temp_result = array(
-	0,0,0,0,0,0,0
-);
-if( !empty($temp_win_perweek) ){
+$temp_result = array( 0,0,0,0,0,0,0 );
+$gw = array([], [], [], [], [] ,[], [], [] );
+if( !empty($temp_noob_perweek) ){
 
 	for($i = 0; $i < 38; $i++){
-		if( isset($temp_win_perweek[$i]) ){
-			$temp_result[$temp_win_perweek[$i]] += 1;
-		}
+		if( isset($temp_noob_perweek[$i]) ){
+			$temp_result[$temp_noob_perweek[$i]] += 1;
+			array_push($gw[$temp_noob_perweek[$i]], $i+1);
+		}else
+			break;
 	}
 
 }
@@ -59,6 +61,7 @@ $res = array(
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result,
+	"gw" => $gw,
 	"fill" => false,
 );
 array_push($result, $res);

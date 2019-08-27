@@ -38,22 +38,23 @@ if( !empty($temp_points) ){
 		if( !empty($temp_points[$i]) ){
 			$max = max($temp_points[$i]);
 			array_push($temp_win_perweek, array_search($max, $temp_points[$i]));
-		}
+		}else
+			break;
 	}
 
 }
 
-$temp_result = array(
-	0,0,0,0,0,0,0,0
-);
-if( !empty($temp_win_perweek) ){
+$temp_result = array( 0,0,0,0,0,0,0,0 );
+$gw = array([], [], [], [], [] ,[], [], [] );
 
+if( !empty($temp_win_perweek) ){
 	for($i = 0; $i < 38; $i++){
 		if( isset($temp_win_perweek[$i]) ){
 			$temp_result[$temp_win_perweek[$i]] += 1;
-		}
+			array_push($gw[$temp_win_perweek[$i]], $i+1);
+		}else
+			break;
 	}
-
 }
 
 $res = array(
@@ -61,6 +62,7 @@ $res = array(
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result,
+	"gw" => $gw,
 	"fill" => false,
 );
 array_push($result, $res);

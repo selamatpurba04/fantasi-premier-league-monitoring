@@ -21,7 +21,7 @@ if( $status == "200" ){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="/assets/images/favicon2.ico">
 
     <title><?= $txt->league->name ?></title>
 
@@ -37,9 +37,8 @@ if( $status == "200" ){
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand"><?= $txt->league->name ?></h3>
+          <h3 class="masthead-brand"><a href=""><?= $txt->league->name ?></a></h3>
           <nav class="nav nav-masthead justify-content-center">
-            
             <a class="nav-link" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
             <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
