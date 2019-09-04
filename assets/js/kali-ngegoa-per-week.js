@@ -22,11 +22,11 @@ var pl = function (){
             footer : function(a, b){
               let txt = "";
               if(res[0].gw[a[0].index].length > 0){
-                txt += "GW Goa: " + res[0].gw[a[0].index].join(", ") + " ";
+                txt += "GW Pro: " + res[0].gw[a[0].index].join(", ") + " ";
               }
               
               if(res[1].gw[a[1].index].length > 0){
-                txt += "GW Pro: " + res[1].gw[a[1].index].join(", ");
+                txt += "GW Goa: " + res[1].gw[a[1].index].join(", ");
               }
               return txt;
             }

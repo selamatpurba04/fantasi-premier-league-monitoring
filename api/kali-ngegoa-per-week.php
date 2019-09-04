@@ -110,7 +110,6 @@ $res_goa = array(
 	"gw" => $gw_goa,
 	"fill" => false,
 );
-array_push($result, $res_goa);
 
 $res_pro = array(
 	"label" => "Kali Pro Weekly",
@@ -121,5 +120,6 @@ $res_pro = array(
 	"fill" => false,
 );
 array_push($result, $res_pro);
+array_push($result, $res_goa);
 
 echo json_encode($result);
