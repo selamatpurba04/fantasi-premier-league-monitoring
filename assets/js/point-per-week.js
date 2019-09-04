@@ -12,7 +12,7 @@ var pl = function (){
         responsive: true,
         title: {
           display: true,
-          text: 'Point per Week'
+          text: 'Point Weekly'
         },
         tooltips: {
           mode: 'index',

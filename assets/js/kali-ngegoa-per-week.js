@@ -13,28 +13,26 @@ var pl = function (){
       options: {
         title: {
           display: true,
-          text: 'Kali NgeGOA'
+          text: 'Pro & Goa Weekly'
         },
         tooltips: {
           mode: 'index',
           intersect: false,
           callbacks: {
             footer : function(a, b){
+              let txt = "";
               if(res[0].gw[a[0].index].length > 0){
-                return "GW: " + res[0].gw[a[0].index].join(", ");
+                txt += "GW Goa: " + res[0].gw[a[0].index].join(", ") + " ";
               }
+              
+              if(res[1].gw[a[1].index].length > 0){
+                txt += "GW Pro: " + res[1].gw[a[1].index].join(", ");
+              }
+              return txt;
             }
           }
         },
-        responsive: true,
-        scales: {
-          xAxes: [{
-            stacked: true,
-          }],
-          yAxes: [{
-            stacked: true
-          }]
-        }
+        responsive: true
       }
     };
 

@@ -40,13 +40,12 @@ if( $status == "200" ){
           <h3 class="masthead-brand"><a href=""><?= $txt->league->name ?></a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="/point-per-week.php">Point</a>
-            <a class="nav-link" href="/transfer-cost-per-week.php">TransferCost</a>
-            <a class="nav-link" href="/kali-ngegoa-per-week.php">NgeGOA</a>
+            <a class="nav-link" href="/transfer-cost-per-week.php">Cost</a>
+            <a class="nav-link" href="/kali-ngegoa-per-week.php">Pro&Goa</a>
             <a class="nav-link" href="/point-per-month.php">Monthly</a>
             <a class="nav-link" href="/total-point-per-week.php">Total</a>
-            <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Juara</a>
-            <a class="nav-link" href="/kali-noob-klasemen-per-week.php">Underdog</a>
-            <a class="nav-link" href="/most-captain.php">MostCaptain</a>
+            <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Top&Bot</a>
+            <a class="nav-link" href="/most-captain.php">Capt.</a>
           </nav>
         </div>
       </header>

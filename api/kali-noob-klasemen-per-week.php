@@ -42,10 +42,10 @@ if( !empty($temp_points) ){
 
 }
 
-$temp_result = array( 0,0,0,0,0,0,0 );
+$temp_result = array( 0,0,0,0,0,0,0,0 );
 $gw = array([], [], [], [], [] ,[], [], [] );
-if( !empty($temp_noob_perweek) ){
 
+if( !empty($temp_noob_perweek) ){
 	for($i = 0; $i < 38; $i++){
 		if( isset($temp_noob_perweek[$i]) ){
 			$temp_result[$temp_noob_perweek[$i]] += 1;
@@ -53,7 +53,6 @@ if( !empty($temp_noob_perweek) ){
 		}else
 			break;
 	}
-
 }
 
 $res = array(

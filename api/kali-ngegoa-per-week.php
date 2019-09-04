@@ -28,6 +28,7 @@ if( !empty($temp_array) ){
 }
 
 $temp_goa_perweek = array();
+$temp_pro_perweek = array();
 if( !empty($temp_points) ){
 	for($i = 0; $i < 38; $i++){
 		if( !empty($temp_points[$i]) ){
@@ -36,6 +37,12 @@ if( !empty($temp_points) ){
 			$minKeys = array_keys($temp_points[$i], $min);
 			$tempMin = 9999;
 			$tempKeyMin = -1;
+			
+			$max = max($temp_points[$i]);
+			$mostMax = [];
+			$maxKeys = array_keys($temp_points[$i], $max);
+			$tempMax = 9999;
+			$tempKeyMax = -1;
 
 			if(count($minKeys) > 1){
 				foreach($minKeys as $v){
@@ -47,35 +54,72 @@ if( !empty($temp_points) ){
 				}
 				$minKeys = [$tempKeyMin];
 			}
+
+			if(count($maxKeys) > 1){
+				foreach($maxKeys as $v){
+					$tm = $temp_points[$i][$v] - $temp_array[$v][$i]->entry_history->event_transfers_cost;
+					if($tm < $tempMax){
+						$tempMax = $tm;
+						$tempKeyMax = $v;
+					}
+				}
+				$maxKeys = [$tempKeyMax];
+			}
+			
 			array_push($temp_goa_perweek, $minKeys);
+			array_push($temp_pro_perweek, $maxKeys);
 		}
 		else
 			break;
 	}
 }
 
-$temp_result = array( 0,0,0,0,0,0,0 );
-$gw = array( [], [], [], [], [] ,[], [], [] );
+$temp_result_goa = array( 0,0,0,0,0,0,0,0 );
+$gw_goa = array( [], [], [], [], [] ,[], [], [] );
 if( !empty($temp_goa_perweek) ){
 	for($i = 0; $i < 38; $i++){
 		if( isset($temp_goa_perweek[$i]) ){
 			foreach ($temp_goa_perweek[$i] as $v) {
-				$temp_result[$v] += 1;
-				array_push($gw[$v], $i+1);
+				$temp_result_goa[$v] += 1;
+				array_push($gw_goa[$v], $i+1);
 			}
 		}else
 			break;
 	}
 }
 
-$res = array(
-	"label" => "Kali NgeGOA",
+$temp_result_pro = array( 0,0,0,0,0,0,0,0 );
+$gw_pro = array( [], [], [], [], [] ,[], [], [] );
+if( !empty($temp_pro_perweek) ){
+	for($i = 0; $i < 38; $i++){
+		if( isset($temp_pro_perweek[$i]) ){
+			foreach ($temp_pro_perweek[$i] as $v) {
+				$temp_result_pro[$v] += 1;
+				array_push($gw_pro[$v], $i+1);
+			}
+		}else
+			break;
+	}
+}
+
+$res_goa = array(
+	"label" => "Kali Goa Weekly",
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
-	"data" => $temp_result,
-	"gw" => $gw,
+	"data" => $temp_result_goa,
+	"gw" => $gw_goa,
 	"fill" => false,
 );
-array_push($result, $res);
+array_push($result, $res_goa);
+
+$res_pro = array(
+	"label" => "Kali Pro Weekly",
+	"backgroundColor" => $temp_color[2],
+	"borderColor" => $temp_color[0],
+	"data" => $temp_result_pro,
+	"gw" => $gw_pro,
+	"fill" => false,
+);
+array_push($result, $res_pro);
 
 echo json_encode($result);

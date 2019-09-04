@@ -12,7 +12,7 @@ var pl = function (){
         responsive: true,
         title: {
           display: true,
-          text: 'Transfer Cost per Week'
+          text: 'Transfer Cost Weekly'
         },
         tooltips: {
           mode: 'index',

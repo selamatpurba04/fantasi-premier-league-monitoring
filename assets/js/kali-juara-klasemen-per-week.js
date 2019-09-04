@@ -13,28 +13,25 @@ var pl = function (){
       options: {
         title: {
           display: true,
-          text: 'Kali Juara'
+          text: 'Top & Bot Klasemen'
         },
         tooltips: {
           mode: 'index',
           intersect: false,
           callbacks: {
             footer : function(a, b){
+              let txt = "";
               if(res[0].gw[a[0].index].length > 0){
-                return "GW: " + res[0].gw[a[0].index].join(", ");
+                txt += "GW Juara: " + res[0].gw[a[0].index].join(", ") + " ";
               }
+              if(res[1].gw[a[1].index].length > 0){
+                txt += "GW Underdog: " + res[1].gw[a[1].index].join(", ");
+              }
+              return txt;
             }
           }
         },
-        responsive: true,
-        scales: {
-          xAxes: [{
-            stacked: true,
-          }],
-          yAxes: [{
-            stacked: true
-          }]
-        }
+        responsive: true
       }
     };
 
