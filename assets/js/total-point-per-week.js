@@ -30,13 +30,6 @@ var pl = function (){
               display: true,
               labelString: 'Game Week'
             }
-          }],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Point Hoki'
-            }
           }]
         }
       }

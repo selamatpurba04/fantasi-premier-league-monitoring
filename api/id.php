@@ -66,4 +66,8 @@ $opts = [
         "header" => "Accept-language: en\r\n" .
             "Cookie: _ga=GA1.2.972335778.1562951777; pl_profile=eyJzIjogIld6SXNNekUwT0RFM056VmQ6MWh5WWtuOkdKcVVWREk2ajl0a1pVOG1UNUNaS1FZMWh3TSIsICJ1IjogeyJpZCI6IDMxNDgxNzc1LCAiZm4iOiAiU2xhbWV0IiwgImxuIjogIk5vc2lrdWVsIiwgImZjIjogbnVsbH19; csrftoken=NFp3ZREEmn09OLWsbr6w1zMaCOce2GYiR5URr4ezYKYaEGBSI7YRFqyGPBsol2H0; sessionid=.eJyrVopPLC3JiC8tTi2Kz0xRslIyNjSxMDQ3N1XSQZZKSkzOTs0DyRfkpBXk6IFk9AJ8QoFyxcHB_o5ALqqGjMTiDKBqwzST5DRzizRjgzRj0zQTI5NEAzNTC9NkM0tT02SLJAsT4xQTQwtLY6VaAHpIK8c:1hyYko:Ed00e0IosPZajQCTCeZ2FieE1zM; _gid=GA1.2.592751596.1566268521\r\n"
     ]
-  ];
+];
+
+$upImg = "<img src='/assets/images/up-arrow.png'>";
+$downImg = "<img src='/assets/images/down-arrow.png'>";
+$stayImg = "<img src='/assets/images/stay-arrow.png'>";

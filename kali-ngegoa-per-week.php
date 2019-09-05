@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/assets/images/favicon2.ico">
 
-    <title>Cete Champions | Liga Low Profile</title>
+    <title>CC 2019/2020</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -25,11 +25,11 @@
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/transfer-cost-per-week.php">Cost</a>
-            <a class="nav-link active" href="/kali-ngegoa-per-week.php">Pro&Goa</a>
+            <a class="nav-link active" href="/kali-ngegoa-per-week.php">Pro&Noob</a>
             <a class="nav-link" href="/point-per-month.php">Monthly</a>
             <a class="nav-link" href="/total-point-per-week.php">Total</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Top&Bot</a>
-            <a class="nav-link" href="/most-captain.php">Capt.</a>
+            <a class="nav-link" href="/most-captain.php">Capt</a>
           </nav>
         </div>
       </header>

@@ -74,7 +74,7 @@ if( !empty($temp_noob_perweek) ){
 }
 
 $res_win = array(
-	"label" => "Kali Top Klasemen",
+	"label" => "Top Klasemen",
 	"backgroundColor" => $temp_color[2],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result_win,
@@ -83,7 +83,7 @@ $res_win = array(
 );
 
 $res_noob = array(
-	"label" => "Kali Underdog Klasemen",
+	"label" => "Underdog Klasemen",
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result_noob,

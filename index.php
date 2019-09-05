@@ -41,11 +41,11 @@ if( $status == "200" ){
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/transfer-cost-per-week.php">Cost</a>
-            <a class="nav-link" href="/kali-ngegoa-per-week.php">Pro&Goa</a>
+            <a class="nav-link" href="/kali-ngegoa-per-week.php">Pro&Noob</a>
             <a class="nav-link" href="/point-per-month.php">Monthly</a>
             <a class="nav-link" href="/total-point-per-week.php">Total</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Top&Bot</a>
-            <a class="nav-link" href="/most-captain.php">Capt.</a>
+            <a class="nav-link" href="/most-captain.php">Capt</a>
           </nav>
         </div>
       </header>
@@ -60,9 +60,15 @@ if( $status == "200" ){
         </tr>
         <?php 
           foreach( $txt->standings->results as $k => $v){
+            $img = $stayImg;
+            if($v->rank < $v->last_rank)
+              $img = $upImg;
+            else if($v->rank > $v->last_rank)
+            $img = $downImg;
+
             echo "<tr>";
-            echo "<td>".$v->rank."</td>";
-            echo "<td class=\"text-left\">".$v->entry_name."</td>";
+            echo "<td>".$v->rank." ".$img."</td>";
+            echo "<td class=\"text-left\">".$v->entry_name." <i style='font-size:10px;'>".$v->player_name."</i></td>";
             echo "<td>".$v->event_total."</td>";
             echo "<td>".$v->total."</td>";
             echo "</tr>";
@@ -72,16 +78,15 @@ if( $status == "200" ){
       </main>
 		
       <footer class="mastfoot mt-auto">
-        <div class="inner">
+        <!-- <div class="inner">
           <p id="status">Monitoring System for Noob</p>
           <p>
             <img id="loading_img" height="35" src="/assets/images/loading-small.gif">
             <img id="done_img" height="35" src="/assets/images/done.png">
           </p>
-        </div>
+        </div> -->
       </footer>
     </div>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -89,7 +94,7 @@ if( $status == "200" ){
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/get-resource.js"></script>
+    <!-- <script src="/assets/js/get-resource.js"></script> -->
   </body>
 </html>
 

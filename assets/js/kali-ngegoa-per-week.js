@@ -13,7 +13,7 @@ var pl = function (){
       options: {
         title: {
           display: true,
-          text: 'Pro & Goa Weekly'
+          text: 'Pro & Noob Weekly'
         },
         tooltips: {
           mode: 'index',
@@ -26,7 +26,7 @@ var pl = function (){
               }
               
               if(res[1].gw[a[1].index].length > 0){
-                txt += "GW Goa: " + res[1].gw[a[1].index].join(", ");
+                txt += "GW Noob: " + res[1].gw[a[1].index].join(", ");
               }
               return txt;
             }

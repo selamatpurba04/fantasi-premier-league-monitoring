@@ -102,8 +102,17 @@ if( !empty($temp_pro_perweek) ){
 	}
 }
 
+$res_pro = array(
+	"label" => "Pro Weekly",
+	"backgroundColor" => $temp_color[2],
+	"borderColor" => $temp_color[0],
+	"data" => $temp_result_pro,
+	"gw" => $gw_pro,
+	"fill" => false,
+);
+
 $res_goa = array(
-	"label" => "Kali Goa Weekly",
+	"label" => "Noob Weekly",
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result_goa,
@@ -111,14 +120,6 @@ $res_goa = array(
 	"fill" => false,
 );
 
-$res_pro = array(
-	"label" => "Kali Pro Weekly",
-	"backgroundColor" => $temp_color[2],
-	"borderColor" => $temp_color[0],
-	"data" => $temp_result_pro,
-	"gw" => $gw_pro,
-	"fill" => false,
-);
 array_push($result, $res_pro);
 array_push($result, $res_goa);
 
