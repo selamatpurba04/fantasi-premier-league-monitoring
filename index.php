@@ -46,6 +46,7 @@ if( $status == "200" ){
             <a class="nav-link" href="/total-point-per-week.php">Total</a>
             <a class="nav-link" href="/kali-juara-klasemen-per-week.php">Top&Bot</a>
             <a class="nav-link" href="/most-captain.php">Capt</a>
+            <a class="nav-link" href="/rules.php">Rules</a>
           </nav>
         </div>
       </header>
