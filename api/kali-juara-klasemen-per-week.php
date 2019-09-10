@@ -83,7 +83,7 @@ $res_win = array(
 );
 
 $res_noob = array(
-	"label" => "Underdog Klasemen",
+	"label" => "Bot Klasemen",
 	"backgroundColor" => $temp_color[0],
 	"borderColor" => $temp_color[0],
 	"data" => $temp_result_noob,

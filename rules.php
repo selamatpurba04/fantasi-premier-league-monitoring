@@ -1,19 +1,3 @@
-<?php
-require("api/id.php");
-
-$url = 'https://fantasy.premierleague.com/api/leagues-classic/'.$id_liga.'/standings/';
-$context = stream_context_create($opts);
-
-$headers = get_headers($url, false, $context);
-$status = substr($headers[0], 9, 3);
-
-if( $status == "200" ){
-  // Open the file using the HTTP headers set above
-  $response = file_get_contents($url, false, $context); 
-  $txt = (object) json_decode($response);
-}
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,7 +7,7 @@ if( $status == "200" ){
     <meta name="author" content="">
     <link rel="icon" href="/assets/images/favicon2.ico">
 
-    <title><?= $txt->league->name ?></title>
+    <title>CC 2019/2020</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +21,7 @@ if( $status == "200" ){
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand"><a href="/"><?= $txt->league->name ?></a></h3>
+          <h3 class="masthead-brand"><a href="/">CC 2019/2020</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" href="/point-per-week.php">Point</a>
             <a class="nav-link" href="/transfer-cost-per-week.php">Cost</a>
