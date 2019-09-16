@@ -103,7 +103,7 @@
           <tr>
             <td>7.</td>
             <td>&nbsp;</td>
-            <td class="text-left">selama masa liga berlangsung, boleh melakukan revisi aturan dan akan diimplemetasikan untuk bulan berikutnya.</td>
+            <td class="text-left">Selama masa liga berlangsung, boleh melakukan revisi aturan dan akan diimplemetasikan untuk bulan berikutnya.</td>
           </tr>
         </table>
       </main>

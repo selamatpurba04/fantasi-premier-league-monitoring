@@ -26,7 +26,7 @@ var pl = function (){
               }
               
               if(res[1].gw[a[1].index].length > 0){
-                txt += "GW Noob: " + res[1].gw[a[1].index].join(", ");
+                txt += " |  GW Noob: " + res[1].gw[a[1].index].join(", ");
               }
               return txt;
             }

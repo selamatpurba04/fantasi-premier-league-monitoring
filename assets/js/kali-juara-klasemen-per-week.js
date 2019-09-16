@@ -25,7 +25,7 @@ var pl = function (){
                 txt += "GW Top: " + res[0].gw[a[0].index].join(", ") + " ";
               }
               if(res[1].gw[a[1].index].length > 0){
-                txt += "GW Bot: " + res[1].gw[a[1].index].join(", ");
+                txt += " |  GW Bot: " + res[1].gw[a[1].index].join(", ");
               }
               return txt;
             }

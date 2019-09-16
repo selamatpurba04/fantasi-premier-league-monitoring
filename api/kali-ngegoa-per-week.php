@@ -41,7 +41,7 @@ if( !empty($temp_points) ){
 			$max = max($temp_points[$i]);
 			$mostMax = [];
 			$maxKeys = array_keys($temp_points[$i], $max);
-			$tempMax = 9999;
+			$tempMax = -9999;
 			$tempKeyMax = -1;
 
 			if(count($minKeys) > 1){
@@ -58,7 +58,7 @@ if( !empty($temp_points) ){
 			if(count($maxKeys) > 1){
 				foreach($maxKeys as $v){
 					$tm = $temp_points[$i][$v] - $temp_array[$v][$i]->entry_history->event_transfers_cost;
-					if($tm < $tempMax){
+					if($tm > $tempMax){
 						$tempMax = $tm;
 						$tempKeyMax = $v;
 					}
