@@ -21,15 +21,27 @@ var pl = function (){
           callbacks: {
             footer : function(a, b){
               let txt = "";
+              let txtPro = "";
+              let txtNoob = "";
+              
               if(res[0].gw[a[0].index].length > 0){
-                txt += "GW Pro: " + res[0].gw[a[0].index].join(", ");
+                txtPro += "GW Pro: " + res[0].gw[a[0].index].join(", ");
               }
-              if(txt != ""){
-                txt +="  |  "
-              }
+              
               if(res[1].gw[a[1].index].length > 0){
-                txt += "GW Noob: " + res[1].gw[a[1].index].join(", ");
+                txtNoob += "GW Noob: " + res[1].gw[a[1].index].join(", ");
               }
+
+              if(txtPro != "" && txtNoob != ""){
+                txt = txtPro + "  |  " + txtNoob;
+              }else {
+                if(txtPro != ""){
+                  txt = txtPro;
+                }else{
+                  txt = txtNoob;
+                }
+              }
+              
               return txt;
             }
           }
