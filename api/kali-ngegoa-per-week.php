@@ -105,7 +105,7 @@ if( !empty($temp_pro_perweek) ){
 $res_pro = array(
 	"label" => "Pro Weekly",
 	"backgroundColor" => $temp_color[2],
-	"borderColor" => $temp_color[0],
+	"borderColor" => $temp_color[2],
 	"data" => $temp_result_pro,
 	"gw" => $gw_pro,
 	"fill" => false,

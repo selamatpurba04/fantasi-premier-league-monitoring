@@ -76,7 +76,7 @@ if( !empty($temp_noob_perweek) ){
 $res_win = array(
 	"label" => "Top Klasemen",
 	"backgroundColor" => $temp_color[2],
-	"borderColor" => $temp_color[0],
+	"borderColor" => $temp_color[2],
 	"data" => $temp_result_win,
 	"gw" => $gw_win,
 	"fill" => false,
