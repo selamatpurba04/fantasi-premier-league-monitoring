@@ -44,7 +44,7 @@ var pl = function (){
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Game Week'
+              labelString: 'Month'
             }
           }]
         }
