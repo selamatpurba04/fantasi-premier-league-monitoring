@@ -1,4 +1,4 @@
-var pl = function (){
+var pl_capt = function (){
 
   var afterReq = function( res ){
 
@@ -12,7 +12,7 @@ var pl = function (){
       data: barChartData,
       options: {
         title: {
-          display: true,
+          display: false,
           text: 'Most Picked Captain'
         },
         tooltips: {
@@ -31,7 +31,7 @@ var pl = function (){
       }
     };
 
-    var ctx = document.getElementById('canvas').getContext('2d');
+    var ctx = document.getElementById('canvas_capt').getContext('2d');
     var myLine = new Chart(ctx, config);
     myLine.render({
         duration: 2000,
@@ -61,5 +61,5 @@ var pl = function (){
 }();
 
 $(document).ready( () => {
-  pl.init();
+  pl_capt.init();
 })

@@ -31,7 +31,7 @@ $temp_color = array(
     "#8900af",
     "#706b06",
     "#00af9a",
-    "#e8dddc"
+    "#f720ed"
 
 );
 
