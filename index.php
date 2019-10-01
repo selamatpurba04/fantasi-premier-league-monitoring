@@ -40,7 +40,6 @@ if( $status == "200" ){
   <style>
     body, html {
         text-align: center;
-        background:#dcdcdc;
     }
     /*PRELOADING------------ */
     #overlayer {
