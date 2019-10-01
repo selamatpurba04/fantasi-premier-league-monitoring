@@ -37,11 +37,89 @@ if( $status == "200" ){
 
   <!-- Custom styles for this template -->
   <link href="assets/css/grayscale.min.css" rel="stylesheet">
+  <style>
+    body, html {
+        text-align: center;
+        background:#dcdcdc;
+    }
+    /*PRELOADING------------ */
+    #overlayer {
+      width:100%;
+      height:100%;  
+      position:absolute;
+      z-index:1;
+      background:#4a4a4a;
+    }
+    .loader {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      z-index:3;
+      border: 4px solid #Fff;
+      top: 50%;
+      animation: loader 2s infinite ease;
+    }
 
+    .loader-inner {
+      vertical-align: top;
+      display: inline-block;
+      width: 100%;
+      background-color: #fff;
+      animation: loader-inner 2s infinite ease-in;
+    }
+
+    @keyframes loader {
+      0% {
+        transform: rotate(0deg);
+      }
+      
+      25% {
+        transform: rotate(180deg);
+      }
+      
+      50% {
+        transform: rotate(180deg);
+      }
+      
+      75% {
+        transform: rotate(360deg);
+      }
+      
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes loader-inner {
+      0% {
+        height: 0%;
+      }
+      
+      25% {
+        height: 0%;
+      }
+      
+      50% {
+        height: 100%;
+      }
+      
+      75% {
+        height: 100%;
+      }
+      
+      100% {
+        height: 0%;
+      }
+    }
+  </style>
 </head>
 
 <body id="page-top">
-
+  <div id="overlayer"></div>
+  <span class="loader">
+    <span class="loader-inner"></span>
+  </span>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -290,6 +368,12 @@ if( $status == "200" ){
 
   <!-- Bootstrap core JavaScript -->
   <script src="/assets/v/jquery/jquery.min.js"></script>
+  <script>
+    $(window).on('load', function() {
+      $(".loader").delay(2500).fadeOut("slow");
+      $("#overlayer").delay(2500).fadeOut("slow");
+    })
+  </script>
   <script src="/assets/v/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
