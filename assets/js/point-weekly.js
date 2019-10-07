@@ -17,7 +17,22 @@ var pl_point_weekly = function (){
         tooltips: {
           mode: 'index',
           intersect: false,
-          itemSort: (a, b, data) => b.yLabel - a.yLabel
+          itemSort: (a, b, data) => b.yLabel - a.yLabel,
+          callbacks: {
+            afterBody: function(dI, dA) {
+              let chips = [];
+              chips.push('');
+              for(var i in dI){
+                let chps = dA.datasets[ dI[i].datasetIndex ].chips[ dI[i].index ];
+                let name = dA.datasets[ dI[i].datasetIndex ].label;
+                if(chps !== null){
+                  chips.push( name + ': ' + chps.charAt(0).toUpperCase() + chps.slice(1));
+                }
+              }
+  
+              return chips;
+            }
+          }
         },
         hover: {
           mode: 'nearest',
