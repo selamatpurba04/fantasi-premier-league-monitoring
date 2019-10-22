@@ -17,7 +17,8 @@ var pl_capt = function (){
         },
         tooltips: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          itemSort: (a, b) => b.yLabel - a.yLabel
         },
         responsive: true,
         scales: {
