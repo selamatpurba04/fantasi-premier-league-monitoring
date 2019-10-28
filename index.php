@@ -111,14 +111,22 @@ if( $status == "200" ){
         height: 0%;
       }
     }
-    .video-background { /* class name used in javascript too */
-      width: 100%; /* width needs to be set to 100% */
-      height: 100%; /* height needs to be set to 100% */
+    /*
+    .video-background { /* class name used in javascript too 
+      max-width: 100%; /* width needs to be set to 100% 
+      max-height: 100%; /* height needs to be set to 100% 
       position: absolute;
       left: 0;
       top: 0;
       z-index: -1;
     }
+    @media (min-width: 992px){
+      .video-background { /* class name used in javascript too 
+        height: 90vh; /* height needs to be set to 100% 
+        width: 98.5%;
+      }
+    }
+    */
   </style>
 </head>
 
@@ -168,7 +176,7 @@ if( $status == "200" ){
 
   <!-- Header -->
   <header class="masthead">
-    <video class="video-background" no-controls autoplay loop muted src="/assets/video/videoBackground.mp4" poster="/assets/images/bg-masthead.jpg"></video>
+    <!--<video class="video-background" no-controls autoplay loop muted src="/assets/video/videoBackground.mp4" poster="/assets/images/bg-masthead.jpg"></video>-->
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center col-md-12">
         <table class="table lead text-white-50 thead-dark">
