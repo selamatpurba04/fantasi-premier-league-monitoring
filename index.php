@@ -111,6 +111,14 @@ if( $status == "200" ){
         height: 0%;
       }
     }
+    .video-background { /* class name used in javascript too */
+      width: 100%; /* width needs to be set to 100% */
+      height: 100%; /* height needs to be set to 100% */
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
   </style>
 </head>
 
@@ -160,6 +168,7 @@ if( $status == "200" ){
 
   <!-- Header -->
   <header class="masthead">
+    <video class="video-background" no-controls autoplay loop muted src="/assets/video/videoBackground.mp4" poster="/assets/images/bg-masthead.jpg"></video>
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center col-md-12">
         <table class="table lead text-white-50 thead-dark">
@@ -195,7 +204,7 @@ if( $status == "200" ){
   </header>
 
   <!-- Point Section -->
-  <section id="point" class="point-section text-center pb-5">
+  <section id="point" class="point-section text-center pt-4 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -390,6 +399,35 @@ if( $status == "200" ){
   <script src="/assets/js/total-point-weekly.js"></script><!--Total-->
   <script src="/assets/js/top-bot-weekly.js"></script><!--Top&Bot-->
   <script src="/assets/js/most-captain.js"></script><!--Capt-->
+  <script>
+    function scaleToFill() {
+      $('video.video-background').each(function(index, videoTag) {
+        var $video = $(videoTag),
+            videoRatio = videoTag.videoWidth / videoTag.videoHeight,
+            tagRatio = $video.width() / $video.height(),
+            val;
+          
+        if (videoRatio < tagRatio) {
+            val = tagRatio / videoRatio * 1.02; <!-- size increased by 2% because value is not fine enough and sometimes leaves a couple of white pixels at the edges -->
+        } else if (tagRatio < videoRatio) {
+            val = videoRatio / tagRatio * 1.02;
+        }
+        
+        $video.css('transform','scale(' + val  + ',' + val + ')');
+
+      });    
+    }
+
+    $(function () {
+        scaleToFill();
+        
+        $('.video-background').on('loadeddata', scaleToFill);
+        
+        $(window).resize(function() {
+            scaleToFill();
+        });
+    });
+  </script>
 </body>
 
 </html>
