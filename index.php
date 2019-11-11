@@ -111,22 +111,41 @@ if( $status == "200" ){
         height: 0%;
       }
     }
-    /*
-    .video-background { /* class name used in javascript too 
-      max-width: 100%; /* width needs to be set to 100% 
-      max-height: 100%; /* height needs to be set to 100% 
+    
+    .video-background { /* class name used in javascript too */
+      width: 100%;
+      height: 100%;
       position: absolute;
       left: 0;
       top: 0;
-      z-index: -1;
+      index: -1;
     }
-    @media (min-width: 992px){
-      .video-background { /* class name used in javascript too 
-        height: 90vh; /* height needs to be set to 100% 
-        width: 98.5%;
+    
+    @media only screen and (min-width : 320px) {
+      .video-background {
+        /* transform: rotate(90deg); */
       }
     }
-    */
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px and max-width: 767px) {
+      
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+      
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
   </style>
 </head>
 
@@ -150,6 +169,9 @@ if( $status == "200" ){
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#cost">Cost</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#inout">In&Out</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#pronoob">Pro&Noob</a>
@@ -176,7 +198,8 @@ if( $status == "200" ){
 
   <!-- Header -->
   <header class="masthead">
-    <!--<video class="video-background" no-controls autoplay loop muted src="/assets/video/videoBackground.mp4" poster="/assets/images/bg-masthead.jpg"></video>-->
+    <video class="video-background" src="/assets/video/videoBackground.webm" 
+    poster="/assets/images/bg-masthead.jpg" no-controls autoplay loop muted></video>
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center col-md-12">
         <table class="table lead text-white-50 thead-dark">
@@ -219,6 +242,129 @@ if( $status == "200" ){
           <h2 class="mb-4 pt-3">Point Weekly</h2>
         </div>
         <canvas id="canvas_point_weekly"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- In&Out Section -->
+  <section id="inout" class="inout-section text-center pt-4 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="mb-4 pt-3">In & Out</h2>
+        </div>
+        <div class="col-lg-8 mx-auto">
+          <table>
+            <tr>
+              <td>
+                <p>
+                  Aji
+                  <button 
+                    type="button" 
+                    class="btn btn-md btn-secondary btn-inout" 
+                    data-toggle="modal" 
+                    data-target="#exampleModalLong">
+                    1
+                  </button>
+                  <button 
+                    type="button" 
+                    class="btn btn-md btn-secondary btn-inout" 
+                    data-toggle="modal" 
+                    data-target="#exampleModalLong">
+                    2
+                  </button>
+                </p>
+              </td>
+              <td>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Filar</td>
+            </tr>
+            <tr>
+              <td>Edi</td>
+            </tr>
+            <tr>
+              <td>Indra</td>
+            </tr>
+            <tr>
+              <td>Bala</td>
+            </tr>
+            <tr>
+              <td>Slamet</td>
+            </tr>
+            <tr>
+              <td>Enye</td>
+            </tr>
+            <tr>
+              <td>Bowo</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Players</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <table>
+              <tr>
+                <th>In</th>
+                <th>Out</th>
+              </tr>
+              <tr>
+                <td>
+                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p80226.png">
+                  <p>Aurier</p>
+                </td>
+                <td>
+                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p57410.png">
+                  <p>Otamendi</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p80226.png">
+                  <p>Aurier</p>
+                </td>
+                <td>
+                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p57410.png">
+                  <p>Otamendi</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p80226.png">
+                  <p>Aurier</p>
+                </td>
+                <td>
+                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p57410.png">
+                  <p>Otamendi</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -408,33 +554,36 @@ if( $status == "200" ){
   <script src="/assets/js/top-bot-weekly.js"></script><!--Top&Bot-->
   <script src="/assets/js/most-captain.js"></script><!--Capt-->
   <script>
-    function scaleToFill() {
-      $('video.video-background').each(function(index, videoTag) {
-        var $video = $(videoTag),
-            videoRatio = videoTag.videoWidth / videoTag.videoHeight,
-            tagRatio = $video.width() / $video.height(),
-            val;
+    $(".btn-inout").on("click", function(){
+      // alert("hehe");
+    })
+    // function scaleToFill() {
+    //   $('video.video-background').each(function(index, videoTag) {
+    //     var $video = $(videoTag),
+    //         videoRatio = videoTag.videoWidth / videoTag.videoHeight,
+    //         tagRatio = $video.width() / $video.height(),
+    //         val;
           
-        if (videoRatio < tagRatio) {
-            val = tagRatio / videoRatio * 1.02; <!-- size increased by 2% because value is not fine enough and sometimes leaves a couple of white pixels at the edges -->
-        } else if (tagRatio < videoRatio) {
-            val = videoRatio / tagRatio * 1.02;
-        }
+    //     if (videoRatio < tagRatio) {
+    //         val = tagRatio / videoRatio * 1.02; <!-- size increased by 2% because value is not fine enough and sometimes leaves a couple of white pixels at the edges -->
+    //     } else if (tagRatio < videoRatio) {
+    //         val = videoRatio / tagRatio * 1.02;
+    //     }
         
-        $video.css('transform','scale(' + val  + ',' + val + ')');
+    //     $video.css('transform','scale(' + val  + ',' + val + ')');
 
-      });    
-    }
+    //   });    
+    // }
 
-    $(function () {
-        scaleToFill();
+    // $(function () {
+    //     scaleToFill();
         
-        $('.video-background').on('loadeddata', scaleToFill);
+    //     $('.video-background').on('loadeddata', scaleToFill);
         
-        $(window).resize(function() {
-            scaleToFill();
-        });
-    });
+    //     $(window).resize(function() {
+    //         scaleToFill();
+    //     });
+    // });
   </script>
 </body>
 
