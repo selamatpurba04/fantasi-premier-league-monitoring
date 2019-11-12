@@ -12,6 +12,9 @@ if( $status == "200" ){
   $response = file_get_contents($url, false, $context); 
   $txt = (object) json_decode($response);
 }
+
+$tempUid = [];
+$tempPN = [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,22 +114,41 @@ if( $status == "200" ){
         height: 0%;
       }
     }
-    /*
-    .video-background { /* class name used in javascript too 
-      max-width: 100%; /* width needs to be set to 100% 
-      max-height: 100%; /* height needs to be set to 100% 
+    
+    .video-background { /* class name used in javascript too */
+      width: 100%;
+      height: 100%;
       position: absolute;
       left: 0;
       top: 0;
-      z-index: -1;
+      index: -1;
     }
-    @media (min-width: 992px){
-      .video-background { /* class name used in javascript too 
-        height: 90vh; /* height needs to be set to 100% 
-        width: 98.5%;
+    
+    @media only screen and (min-width : 320px) {
+      .video-background {
+        /* transform: rotate(90deg); */
       }
     }
-    */
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px and max-width: 767px) {
+      
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+      
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
   </style>
 </head>
 
@@ -147,6 +169,9 @@ if( $status == "200" ){
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#point">Point</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#inout">In&Out</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#cost">Cost</a>
@@ -176,7 +201,8 @@ if( $status == "200" ){
 
   <!-- Header -->
   <header class="masthead">
-    <!--<video class="video-background" no-controls autoplay loop muted src="/assets/video/videoBackground.mp4" poster="/assets/images/bg-masthead.jpg"></video>-->
+    <!--<video class="video-background" src="/assets/video/videoBackground.webm" 
+    poster="/assets/images/bg-masthead.jpg" no-controls autoplay loop muted></video>-->
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center col-md-12">
         <table class="table lead text-white-50 thead-dark">
@@ -191,6 +217,8 @@ if( $status == "200" ){
           <tbody>
           <?php 
             foreach( $txt->standings->results as $k => $v){
+              array_push($tempUid, $v->entry);
+              array_push($tempPN, $v->player_name);
               $img = $stayImg;
               if($v->rank < $v->last_rank)
                 $img = $upImg;
@@ -223,8 +251,68 @@ if( $status == "200" ){
     </div>
   </section>
 
+  <!-- In&Out Section -->
+  <section id="inout" class="inout-section text-center pt-4 pb-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="mb-4 pt-3">In & Out</h2>
+        </div>
+        <div class="col-lg-12 mx-auto">
+          <?php foreach($tempUid as $k => $v): ?>
+            <span class="badge badge-secondary" style="font-size:1rem;"><?= $tempPN[$k] ?></span>
+            <div class="alert alert-primary" role="alert">
+              <?php for($i=0;$i<$currentGW;$i++): ?>
+                <button 
+                  type="button" 
+                  class="btn btn-md btn-secondary btn-inout" 
+                  data-toggle="modal" 
+                  data-target="#exampleModalLong"
+                  data-uid="<?= $v ?>"
+                  data-gw="<?= $i ?>">
+                  <?= $i+1 ?>
+                </button>
+              <?php endfor; ?>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Players</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status" id="spinnerPlayer">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <div class="col-lg-12 row">
+              <div class="col-lg-6"><h1>In</h1></div>
+              <div class="col-lg-6"><h1>Out</h1></div>
+            </div>
+            <div id="tablePlayer" class="col-lg-12 row">
+              <div class="col-lg-6" id="pIn"></div>
+              <div class="col-lg-6" id="pOut"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Cost Section -->
-  <section id="cost" class="cost-section bg-light text-center pt-3 pb-5">
+  <section id="cost" class="cost-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -236,7 +324,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Pro&Noob Section -->
-  <section id="pronoob" class="pronoob-section text-center pb-5">
+  <section id="pronoob" class="pronoob-section bg-light text-center pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -248,7 +336,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Monthly Section -->
-  <section id="monthly" class="monthly-section bg-light text-center pt-3 pb-5">
+  <section id="monthly" class="monthly-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -260,7 +348,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Total Section -->
-  <section id="total" class="total-section text-center pb-5">
+  <section id="total" class="total-section bg-light text-center pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -272,7 +360,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Top&Bot Section -->
-  <section id="topbot" class="topbot-section bg-light text-center pt-3 pb-5">
+  <section id="topbot" class="topbot-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -284,7 +372,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Capt Section -->
-  <section id="capt" class="capt-section text-center pb-5">
+  <section id="capt" class="capt-section bg-light text-center pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -296,7 +384,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Rules Section -->
-  <section id="rules" class="rules-section bg-light text-center pt-3 pb-5">
+  <section id="rules" class="rules-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 mx-auto">
@@ -408,33 +496,85 @@ if( $status == "200" ){
   <script src="/assets/js/top-bot-weekly.js"></script><!--Top&Bot-->
   <script src="/assets/js/most-captain.js"></script><!--Capt-->
   <script>
-    function scaleToFill() {
-      $('video.video-background').each(function(index, videoTag) {
-        var $video = $(videoTag),
-            videoRatio = videoTag.videoWidth / videoTag.videoHeight,
-            tagRatio = $video.width() / $video.height(),
-            val;
-          
-        if (videoRatio < tagRatio) {
-            val = tagRatio / videoRatio * 1.02; <!-- size increased by 2% because value is not fine enough and sometimes leaves a couple of white pixels at the edges -->
-        } else if (tagRatio < videoRatio) {
-            val = videoRatio / tagRatio * 1.02;
+    $('#spinnerPlayer').hide();
+    $('.btn-inout').on('click', function(){
+      $('#spinnerPlayer').show();
+      let uid = $(this).data('uid');
+      let gw = $(this).data('gw');
+      let pIn = '';
+      let pOut = '';
+      $.get(`/api/transfered-player.php?uid=${uid}&gw=${gw}`, function( data ) {
+        let d = JSON.parse(data);
+        if(d.in.length > 0){
+          for(var i in d.in){
+            pIn += `
+              <div class="col-lg-12 pt-2">
+                <img width="70%" class="img-thumbnail img-fluid" src="${d.in[i].photo}">
+              </div>
+              <div class="col-lg-12">
+                ${d.in[i].name}
+              </div>
+            `;
+          }
+        }else{
+          pIn += `
+            <div class="col-lg-12 pt-2">
+              <i>empty</i>
+            </div>
+          `;
+        }
+
+        if(d.out.length > 0){
+          for(var i in d.out){
+            pOut += `
+              <div class="col-lg-12 pt-2">
+                <img width="70%" class="img-thumbnail img-fluid" src="${d.out[i].photo}">
+              </div>
+              <div class="col-lg-12">
+                ${d.out[i].name}
+              </div>
+            `;
+          }
+        }else{
+          pOut += `
+            <div class="col-lg-12 pt-2">
+              <i>empty</i>
+            </div>
+          `;
         }
         
-        $video.css('transform','scale(' + val  + ',' + val + ')');
-
-      });    
-    }
-
-    $(function () {
-        scaleToFill();
+        $("#pIn").html(pIn);
+        $("#pOut").html(pOut);
+        $('#spinnerPlayer').hide();
+      });
+    })
+    // function scaleToFill() {
+    //   $('video.video-background').each(function(index, videoTag) {
+    //     var $video = $(videoTag),
+    //         videoRatio = videoTag.videoWidth / videoTag.videoHeight,
+    //         tagRatio = $video.width() / $video.height(),
+    //         val;
+          
+    //     if (videoRatio < tagRatio) {
+    //         val = tagRatio / videoRatio * 1.02; <!-- size increased by 2% because value is not fine enough and sometimes leaves a couple of white pixels at the edges -->
+    //     } else if (tagRatio < videoRatio) {
+    //         val = videoRatio / tagRatio * 1.02;
+    //     }
         
-        $('.video-background').on('loadeddata', scaleToFill);
+    //     $video.css('transform','scale(' + val  + ',' + val + ')');
+
+    //   });    
+    // }
+
+    // $(function () {
+    //     scaleToFill();
         
-        $(window).resize(function() {
-            scaleToFill();
-        });
-    });
+    //     $('.video-background').on('loadeddata', scaleToFill);
+        
+    //     $(window).resize(function() {
+    //         scaleToFill();
+    //     });
+    // });
   </script>
 </body>
 
