@@ -254,57 +254,22 @@ if( $status == "200" ){
           <h2 class="mb-4 pt-3">In & Out</h2>
         </div>
         <div class="col-lg-8 mx-auto">
-          <table>
-            <tr>
-              <td>
-                <p>
-                  Aji
-                  <button 
-                    type="button" 
-                    class="btn btn-md btn-secondary btn-inout" 
-                    data-toggle="modal" 
-                    data-target="#exampleModalLong">
-                    1
-                  </button>
-                  <button 
-                    type="button" 
-                    class="btn btn-md btn-secondary btn-inout" 
-                    data-toggle="modal" 
-                    data-target="#exampleModalLong">
-                    2
-                  </button>
-                </p>
-              </td>
-              <td>
-                <div class="collapse" id="collapseExample">
-                  <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Filar</td>
-            </tr>
-            <tr>
-              <td>Edi</td>
-            </tr>
-            <tr>
-              <td>Indra</td>
-            </tr>
-            <tr>
-              <td>Bala</td>
-            </tr>
-            <tr>
-              <td>Slamet</td>
-            </tr>
-            <tr>
-              <td>Enye</td>
-            </tr>
-            <tr>
-              <td>Bowo</td>
-            </tr>
-          </table>
+          <?php foreach($temp_uid as $k => $v): ?>
+            <div class="alert alert-primary" role="alert">
+              <span class="badge badge-secondary" style="font-size:2rem;"><?= $temp_name[$k] ?></span>
+              <?php for($i=0;$i<$currentGW;$i++): ?>
+                <button 
+                  type="button" 
+                  class="btn btn-md btn-secondary btn-inout" 
+                  data-toggle="modal" 
+                  data-target="#exampleModalLong"
+                  data-uid="<?= $v ?>"
+                  data-gw="<?= $i ?>">
+                  <?= $i+1 ?>
+                </button>
+              <?php endfor; ?>
+            </div>
+          <?php endforeach; ?>
         </div>
       </div>
     </div>
@@ -320,46 +285,17 @@ if( $status == "200" ){
           </div>
           <div class="modal-body text-center">
             <div class="d-flex justify-content-center">
-              <div class="spinner-border" role="status">
+              <div class="spinner-border" role="status" id="spinnerPlayer">
                 <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <table>
-              <tr>
-                <th>In</th>
-                <th>Out</th>
-              </tr>
-              <tr>
-                <td>
-                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p80226.png">
-                  <p>Aurier</p>
-                </td>
-                <td>
-                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p57410.png">
-                  <p>Otamendi</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p80226.png">
-                  <p>Aurier</p>
-                </td>
-                <td>
-                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p57410.png">
-                  <p>Otamendi</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p80226.png">
-                  <p>Aurier</p>
-                </td>
-                <td>
-                  <img width="60%" class="img-thumbnail img-fluid" src="https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p57410.png">
-                  <p>Otamendi</p>
-                </td>
-              </tr>
-            </table>
+            <div class="col-lg-12 row">
+              <div class="col-lg-6"><h1>In</h1></div>
+              <div class="col-lg-6"><h1>Out</h1></div>
+            </div>
+            <div id="tablePlayer" class="col-lg-12 row">
+              
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -554,8 +490,33 @@ if( $status == "200" ){
   <script src="/assets/js/top-bot-weekly.js"></script><!--Top&Bot-->
   <script src="/assets/js/most-captain.js"></script><!--Capt-->
   <script>
-    $(".btn-inout").on("click", function(){
-      // alert("hehe");
+    $('#spinnerPlayer').hide();
+    $('.btn-inout').on('click', function(){
+      $('#spinnerPlayer').show();
+      let uid = $(this).data('uid');
+      let gw = $(this).data('gw');
+      let pIn = '';
+      let pOut = '';
+      $.get(`/api/transfered-player.php?uid=${uid}&gw=${gw}`, function( data ) {
+        let d = JSON.parse(data);
+        console.log(d);
+        if(data.in.length > 0){
+          for(var i in data.in){
+            pIn += `
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <img width="70%" class="img-thumbnail img-fluid" src="${data.in[i].name}">
+              </div>
+              <div class="col-lg-12">
+                ${data.in[i].name}
+              </div>
+            </div>
+            `;
+          }
+        }
+        
+        $('#spinnerPlayer').hide();
+      });
     })
     // function scaleToFill() {
     //   $('video.video-background').each(function(index, videoTag) {

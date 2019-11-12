@@ -2,7 +2,7 @@
 
 require("id.php");
 
-$result = array();
+$result = (object) array();
 $photo_baseUrl = "https://platform-static-files.s3.amazonaws.com/premierleague/photos/players/110x140/p";
 $uid = $_GET['uid'];
 $gw = $_GET['gw'];
@@ -63,8 +63,7 @@ if(!empty($eTransferOut)){
   }
 }
 
-array_push( $result, (object) ['in' => $playerIn] );
-array_push( $result, (object) ['out' => $playerOut] );
-
+$result->in = $playerIn;
+$result->out = $playerOut;
 
 echo json_encode($result);
