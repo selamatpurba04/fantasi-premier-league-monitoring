@@ -12,6 +12,9 @@ if( $status == "200" ){
   $response = file_get_contents($url, false, $context); 
   $txt = (object) json_decode($response);
 }
+
+$tempUid = [];
+$tempPN = [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -168,10 +171,10 @@ if( $status == "200" ){
             <a class="nav-link js-scroll-trigger" href="#point">Point</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#cost">Cost</a>
+            <a class="nav-link js-scroll-trigger" href="#inout">In&Out</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#inout">In&Out</a>
+            <a class="nav-link js-scroll-trigger" href="#cost">Cost</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#pronoob">Pro&Noob</a>
@@ -198,8 +201,8 @@ if( $status == "200" ){
 
   <!-- Header -->
   <header class="masthead">
-    <video class="video-background" src="/assets/video/videoBackground.webm" 
-    poster="/assets/images/bg-masthead.jpg" no-controls autoplay loop muted></video>
+    <!--<video class="video-background" src="/assets/video/videoBackground.webm" 
+    poster="/assets/images/bg-masthead.jpg" no-controls autoplay loop muted></video>-->
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center col-md-12">
         <table class="table lead text-white-50 thead-dark">
@@ -214,6 +217,8 @@ if( $status == "200" ){
           <tbody>
           <?php 
             foreach( $txt->standings->results as $k => $v){
+              array_push($tempUid, $v->entry);
+              array_push($tempPN, $v->player_name);
               $img = $stayImg;
               if($v->rank < $v->last_rank)
                 $img = $upImg;
@@ -247,16 +252,16 @@ if( $status == "200" ){
   </section>
 
   <!-- In&Out Section -->
-  <section id="inout" class="inout-section text-center pt-4 pb-5">
+  <section id="inout" class="inout-section text-center pt-4 pb-5 bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2 class="mb-4 pt-3">In & Out</h2>
         </div>
-        <div class="col-lg-8 mx-auto">
-          <?php foreach($temp_uid as $k => $v): ?>
+        <div class="col-lg-12 mx-auto">
+          <?php foreach($tempUid as $k => $v): ?>
+            <span class="badge badge-secondary" style="font-size:1rem;"><?= $tempPN[$k] ?></span>
             <div class="alert alert-primary" role="alert">
-              <span class="badge badge-secondary" style="font-size:2rem;"><?= $temp_name[$k] ?></span>
               <?php for($i=0;$i<$currentGW;$i++): ?>
                 <button 
                   type="button" 
@@ -294,7 +299,8 @@ if( $status == "200" ){
               <div class="col-lg-6"><h1>Out</h1></div>
             </div>
             <div id="tablePlayer" class="col-lg-12 row">
-              
+              <div class="col-lg-6" id="pIn"></div>
+              <div class="col-lg-6" id="pOut"></div>
             </div>
           </div>
           <div class="modal-footer">
@@ -306,7 +312,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Cost Section -->
-  <section id="cost" class="cost-section bg-light text-center pt-3 pb-5">
+  <section id="cost" class="cost-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -318,7 +324,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Pro&Noob Section -->
-  <section id="pronoob" class="pronoob-section text-center pb-5">
+  <section id="pronoob" class="pronoob-section bg-light text-center pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -330,7 +336,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Monthly Section -->
-  <section id="monthly" class="monthly-section bg-light text-center pt-3 pb-5">
+  <section id="monthly" class="monthly-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -342,7 +348,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Total Section -->
-  <section id="total" class="total-section text-center pb-5">
+  <section id="total" class="total-section bg-light text-center pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -354,7 +360,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Top&Bot Section -->
-  <section id="topbot" class="topbot-section bg-light text-center pt-3 pb-5">
+  <section id="topbot" class="topbot-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -366,7 +372,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Capt Section -->
-  <section id="capt" class="capt-section text-center pb-5">
+  <section id="capt" class="capt-section bg-light text-center pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -378,7 +384,7 @@ if( $status == "200" ){
   </section>
 
   <!-- Rules Section -->
-  <section id="rules" class="rules-section bg-light text-center pt-3 pb-5">
+  <section id="rules" class="rules-section text-center pt-3 pb-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 mx-auto">
@@ -499,22 +505,46 @@ if( $status == "200" ){
       let pOut = '';
       $.get(`/api/transfered-player.php?uid=${uid}&gw=${gw}`, function( data ) {
         let d = JSON.parse(data);
-        console.log(d);
-        if(data.in.length > 0){
-          for(var i in data.in){
+        if(d.in.length > 0){
+          for(var i in d.in){
             pIn += `
-            <div class="col-lg-6">
-              <div class="col-lg-12">
-                <img width="70%" class="img-thumbnail img-fluid" src="${data.in[i].name}">
+              <div class="col-lg-12 pt-2">
+                <img width="70%" class="img-thumbnail img-fluid" src="${d.in[i].photo}">
               </div>
               <div class="col-lg-12">
-                ${data.in[i].name}
+                ${d.in[i].name}
               </div>
-            </div>
             `;
           }
+        }else{
+          pIn += `
+            <div class="col-lg-12 pt-2">
+              <i>empty</i>
+            </div>
+          `;
+        }
+
+        if(d.out.length > 0){
+          for(var i in d.out){
+            pOut += `
+              <div class="col-lg-12 pt-2">
+                <img width="70%" class="img-thumbnail img-fluid" src="${d.out[i].photo}">
+              </div>
+              <div class="col-lg-12">
+                ${d.out[i].name}
+              </div>
+            `;
+          }
+        }else{
+          pOut += `
+            <div class="col-lg-12 pt-2">
+              <i>empty</i>
+            </div>
+          `;
         }
         
+        $("#pIn").html(pIn);
+        $("#pOut").html(pOut);
         $('#spinnerPlayer').hide();
       });
     })
