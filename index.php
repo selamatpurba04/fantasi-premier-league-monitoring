@@ -261,15 +261,16 @@ $tempPN = [];
         <div class="col-lg-12 mx-auto">
           <?php foreach($tempUid as $k => $v): ?>
             <span class="badge badge-secondary" style="font-size:1rem;"><?= $tempPN[$k] ?></span>
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-primary row" role="alert">
               <?php for($i=0;$i<$currentGW;$i++): ?>
                 <button 
                   type="button" 
-                  class="btn btn-md btn-secondary btn-inout" 
+                  class="btn btn-md btn-secondary btn-inout ml-1" 
                   data-toggle="modal" 
                   data-target="#exampleModalLong"
                   data-uid="<?= $v ?>"
-                  data-gw="<?= $i ?>">
+                  data-gw="<?= $i ?>"
+                  data-name="<?= $tempPN[$k] ?>">
                   <?= $i+1 ?>
                 </button>
               <?php endfor; ?>
@@ -294,13 +295,13 @@ $tempPN = [];
                 <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <div class="col-lg-12 row">
-              <div class="col-lg-6"><h1>In</h1></div>
-              <div class="col-lg-6"><h1>Out</h1></div>
+            <div class="col-sm-12 row">
+              <div class="col-sm-6"><h1>In</h1></div>
+              <div class="col-sm-6"><h1>Out</h1></div>
             </div>
-            <div id="tablePlayer" class="col-lg-12 row">
-              <div class="col-lg-6" id="pIn"></div>
-              <div class="col-lg-6" id="pOut"></div>
+            <div id="tablePlayer" class="col-sm-12 row">
+              <div class="col-sm-6" id="pIn"></div>
+              <div class="col-sm-6" id="pOut"></div>
             </div>
           </div>
           <div class="modal-footer">
@@ -501,24 +502,26 @@ $tempPN = [];
       $('#spinnerPlayer').show();
       let uid = $(this).data('uid');
       let gw = $(this).data('gw');
+      let name = $(this).data('name');
       let pIn = '';
       let pOut = '';
+      $("#exampleModalLongTitle").html(`GW ${gw+1} - ${name} `);
       $.get(`/api/transfered-player.php?uid=${uid}&gw=${gw}`, function( data ) {
         let d = JSON.parse(data);
         if(d.in.length > 0){
           for(var i in d.in){
             pIn += `
-              <div class="col-lg-12 pt-2">
+              <div class="col-sm-12 pt-2">
                 <img width="70%" class="img-thumbnail img-fluid" src="${d.in[i].photo}">
               </div>
-              <div class="col-lg-12">
+              <div class="col-sm-12">
                 ${d.in[i].name}
               </div>
             `;
           }
         }else{
           pIn += `
-            <div class="col-lg-12 pt-2">
+            <div class="col-sm-12 pt-2">
               <i>empty</i>
             </div>
           `;
@@ -527,17 +530,17 @@ $tempPN = [];
         if(d.out.length > 0){
           for(var i in d.out){
             pOut += `
-              <div class="col-lg-12 pt-2">
+              <div class="col-sm-12 pt-2">
                 <img width="70%" class="img-thumbnail img-fluid" src="${d.out[i].photo}">
               </div>
-              <div class="col-lg-12">
+              <div class="col-sm-12">
                 ${d.out[i].name}
               </div>
             `;
           }
         }else{
           pOut += `
-            <div class="col-lg-12 pt-2">
+            <div class="col-sm-12 pt-2">
               <i>empty</i>
             </div>
           `;
