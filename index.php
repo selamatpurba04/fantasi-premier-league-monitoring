@@ -258,7 +258,7 @@ $tempPN = [];
         <div class="col-lg-8 mx-auto">
           <h2 class="mb-4 pt-3">In & Out</h2>
         </div>
-        <div class="col-lg-12 mx-auto">
+        <div class="col-lg-8 mx-auto">
           <?php foreach($tempUid as $k => $v): ?>
             <span class="badge badge-secondary" style="font-size:1rem;"><?= $tempPN[$k] ?></span>
             <div class="alert alert-primary row" role="alert">
