@@ -4,22 +4,22 @@ $id_liga = "228438";
 $temp_uid = array(    
 	967889, //aji
 	969435, //filar
+    969793, //edi
+	1009865, //indra,
+	4002072, //bala
 	419041, //selamat
 	816860, //enye
-	4002072, //bala
-	1009865, //indra,
-    969793, //edi
     1012893 //bowo
 );
 
 $temp_name = array(    
     "Aji",
     "Filar",
+    "Edi",
+    "Indra",
+    "Bala",
     "Selamat",
     "Enye",
-    "Bala",
-    "Indra",
-    "Edi",
     "Bowo"
 );
 
