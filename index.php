@@ -499,6 +499,8 @@ $tempPN = [];
   <script>
     $('#spinnerPlayer').hide();
     $('.btn-inout').on('click', function(){
+      $("#pIn").empty();
+      $("#pOut").empty();
       $('#spinnerPlayer').show();
       let uid = $(this).data('uid');
       let gw = $(this).data('gw');
