@@ -265,7 +265,7 @@ $tempPN = [];
               <?php for($i=0;$i<$currentGW;$i++): ?>
                 <button 
                   type="button" 
-                  class="btn btn-md btn-secondary btn-inout ml-1" 
+                  class="btn btn-md btn-secondary btn-inout ml-1 mt-1" 
                   data-toggle="modal" 
                   data-target="#exampleModalLong"
                   data-uid="<?= $v ?>"
