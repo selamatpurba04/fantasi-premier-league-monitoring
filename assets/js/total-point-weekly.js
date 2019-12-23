@@ -1,12 +1,12 @@
 var pl_total = function (){
 
-  var afterReq = function( res, arGW ){
+  var afterReq = function( datasets, labels ){
 
     var config = {
       type: 'line',
       data: {
-        labels: arGW,
-        datasets: res
+        labels,
+        datasets
       },
       options: {
         responsive: true,
@@ -52,13 +52,13 @@ var pl_total = function (){
       dataType: 'JSON',
       type: 'GET'
     }).done( (res) => {
-      let gw = res[0].data.length;
-      let arGW = []
-      for(var i = 1; i <= gw; i++){
-        arGW.push(i)
+      const { currentGW, startGW, datasets } = res;
+      let labels = [];
+      for(var i = startGW; i <= currentGW; i++){
+        labels.push(i);
       }
-    
-      afterReq(res, arGW);
+      
+      afterReq(datasets, labels);
     });
 
   }
