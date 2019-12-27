@@ -74,6 +74,10 @@ $tempPN = [];
     .table td, .table th {
       border-top: none !important;
     }
+    .alert-primary {
+      background-color: #ffffff !important;
+      border-color: #ffffff !important;
+    }
 
     @keyframes loader {
       0% {
@@ -300,8 +304,8 @@ $tempPN = [];
               </div>
             </div>
             <div class="col-sm-12 row">
-              <div class="col-sm-6"><h1>In</h1></div>
-              <div class="col-sm-6"><h1>Out</h1></div>
+              <div class="col-sm-6"><h1 class="text-success">In</h1></div>
+              <div class="col-sm-6"><h1 class="text-danger">Out</h1></div>
             </div>
             <div id="tablePlayer" class="col-sm-12 row">
               <div class="col-sm-6" id="pIn"></div>
