@@ -262,7 +262,7 @@ $tempPN = [];
           <?php foreach($tempUid as $k => $v): ?>
             <span class="badge badge-secondary" style="font-size:1rem;"><?= $tempPN[$k] ?></span>
             <div class="alert alert-primary row" role="alert">
-              <?php for($i=0;$i<$currentGW;$i++): ?>
+              <?php for( $i = $startGW-1;$i < $currentGW;$i++ ): ?>
                 <button 
                   type="button" 
                   class="btn btn-md btn-secondary btn-inout ml-1 mt-1" 
