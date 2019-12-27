@@ -71,6 +71,10 @@ $tempPN = [];
       animation: loader-inner 2s infinite ease-in;
     }
 
+    .table td, .table th {
+      border-top: none !important;
+    }
+
     @keyframes loader {
       0% {
         transform: rotate(0deg);
@@ -205,7 +209,7 @@ $tempPN = [];
     poster="/assets/images/bg-masthead.jpg" no-controls autoplay loop muted></video>-->
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center col-md-12">
-        <table class="table lead text-white-50 thead-dark">
+        <table class="table lead text-white thead-dark">
           <thead>
             <tr>
               <th>Rank</th>
@@ -227,7 +231,7 @@ $tempPN = [];
 
               echo "<tr>";
               echo "<td>".$v->rank." ".$img."</td>";
-              echo "<td class=\"text-left\">".$v->entry_name." <i style='font-size:10px;'>".$v->player_name."</i></td>";
+              echo "<td class=\"text-left\"><a href='https://fantasy.premierleague.com/entry/".$v->entry."/history' target='_blank'>".$v->entry_name."</a> <i style='font-size:10px;'>".$v->player_name."</i></td>";
               echo "<td>".$v->event_total."</td>";
               echo "<td>".$v->total."</td>";
               echo "</tr>";
