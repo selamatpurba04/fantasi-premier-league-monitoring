@@ -72,5 +72,5 @@ $upImg = "<img src='/assets/images/up-arrow.png' width='12'>";
 $downImg = "<img src='/assets/images/down-arrow.png' width='12'>";
 $stayImg = "<img src='/assets/images/stay-arrow.png' width='12'>";
 
-$currentGW = 22;
-$startGW = 18;
+$currentGW = 23;
+$startGW = 19;
