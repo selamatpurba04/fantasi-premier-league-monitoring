@@ -3,12 +3,12 @@
 $id_liga = "228438";
 $temp_uid = array(    
 	967889, //aji
-	969435, //filar
+    969435, //filar
     969793, //edi
-	1009865, //indra,
-	4002072, //bala
-	419041, //selamat
-	816860, //enye
+    1009865, //indra,
+    4002072, //bala
+    419041, //selamat
+    816860, //enye
     1012893 //bowo
 );
 
@@ -72,5 +72,11 @@ $upImg = "<img src='/assets/images/up-arrow.png' width='12'>";
 $downImg = "<img src='/assets/images/down-arrow.png' width='12'>";
 $stayImg = "<img src='/assets/images/stay-arrow.png' width='12'>";
 
-$currentGW = 27;
-$startGW = 23;
+$currentGW = 47;
+$startGW = 27;
+$zeroWeeks = array( 29, 30, 31, 32, 33, 34, 35, 36, 37);
+
+function dd($arg) {
+    var_dump($arg);
+    die();
+}

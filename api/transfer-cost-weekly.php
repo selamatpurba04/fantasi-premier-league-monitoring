@@ -12,8 +12,10 @@ for( $x = 0; $x < count($temp_uid); $x++){
 	$val = fread($myfile,filesize("../assets/data/".$temp_uid[$x].".json"));
 	$val = (array) json_decode($val);
 	for ($i=$startGW -1; $i < count($val); $i++) {
-		$transfercost = (int)  $val[$i]->entry_history->event_transfers_cost;
-		array_push($temp_points, $transfercost);
+		if( !in_array($i, $zeroWeeks) ) {
+			$transfercost = (int)  $val[$i]->entry_history->event_transfers_cost;
+			array_push($temp_points, $transfercost);
+		}
 	}
 
 	$res = array(
@@ -28,7 +30,7 @@ for( $x = 0; $x < count($temp_uid); $x++){
 
 $rest = (object) [
 	'startGW' => $startGW,
-	'currentGW' => $currentGW,
+	'currentGW' => $currentGW - count($zeroWeeks),
 	'datasets' => $datasets
 ];
 

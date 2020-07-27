@@ -270,17 +270,21 @@ $tempPN = [];
           <?php foreach($tempUid as $k => $v): ?>
             <span class="badge badge-secondary" style="font-size:1rem;"><?= $tempPN[$k] ?></span>
             <div class="alert alert-primary row" role="alert">
+              <?php $j=$startGW ?>
               <?php for( $i = $startGW-1;$i < $currentGW;$i++ ): ?>
-                <button 
-                  type="button" 
-                  class="btn btn-md btn-secondary btn-inout ml-1 mt-1" 
-                  data-toggle="modal" 
-                  data-target="#exampleModalLong"
-                  data-uid="<?= $v ?>"
-                  data-gw="<?= $i ?>"
-                  data-name="<?= $tempPN[$k] ?>">
-                  <?= $i+1 ?>
-                </button>
+                <?php if( !in_array($i, $zeroWeeks) ): ?>
+                  <button 
+                    type="button" 
+                    class="btn btn-md btn-secondary btn-inout ml-1 mt-1" 
+                    data-toggle="modal" 
+                    data-target="#exampleModalLong"
+                    data-uid="<?= $v ?>"
+                    data-gw="<?= $i ?>"
+                    data-gw-name="<?= $j-1 ?>"
+                    data-name="<?= $tempPN[$k] ?>">
+                    <?= $j++ ?>
+                  </button>
+                <?php endif; ?>
               <?php endfor; ?>
             </div>
           <?php endforeach; ?>
@@ -512,10 +516,11 @@ $tempPN = [];
       $('#spinnerPlayer').show();
       let uid = $(this).data('uid');
       let gw = $(this).data('gw');
+      let gwName = $(this).data('gw-name');
       let name = $(this).data('name');
       let pIn = '';
       let pOut = '';
-      $("#exampleModalLongTitle").html(`GW ${gw+1} - ${name} `);
+      $("#exampleModalLongTitle").html(`GW ${gwName+1} - ${name} `);
       $.get(`/api/transfered-player.php?uid=${uid}&gw=${gw}`, function( data ) {
         let d = JSON.parse(data);
         if(d.in.length > 0){

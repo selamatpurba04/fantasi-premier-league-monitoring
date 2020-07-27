@@ -11,7 +11,10 @@ var pl_point_monthly = function (){
       "February",
       "March",
       "April",
-      "May"
+      "May",
+      "June",
+      "July",
+      "Aug"
     ];
 
     return listMonth[num];

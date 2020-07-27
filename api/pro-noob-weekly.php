@@ -13,7 +13,7 @@ for( $x = 0; $x < count($temp_uid); $x++){
 
 $temp_points = array();
 if( !empty($temp_array) ){
-	for ($i=0; $i < 38; $i++) {
+	for ($i=0; $i < 47; $i++) {
 		$pointWeek = 0;
 		$temp_points[$i] = array();
 		for( $x = 0; $x < count($temp_uid); $x++){
@@ -30,7 +30,7 @@ if( !empty($temp_array) ){
 $temp_goa_perweek = array();
 $temp_pro_perweek = array();
 if( !empty($temp_points) ){
-	for($i = 0; $i < 38; $i++){
+	for($i = 0; $i < 47; $i++){
 		if( !empty($temp_points[$i]) ){
 			$min = min($temp_points[$i]);
 			$mostMin = [];
@@ -77,28 +77,30 @@ if( !empty($temp_points) ){
 $temp_result_goa = array( 0,0,0,0,0,0,0,0 );
 $gw_goa = array( [], [], [], [], [] ,[], [], [] );
 if( !empty($temp_goa_perweek) ){
-	for($i = 0; $i < 38; $i++){
-		if( isset($temp_goa_perweek[$i]) ){
+	$j = 0;
+	for($i = 0; $i < 47; $i++){
+		if( isset($temp_goa_perweek[$i]) && !in_array($i, $zeroWeeks) ){
 			foreach ($temp_goa_perweek[$i] as $v) {
 				$temp_result_goa[$v] += 1;
-				array_push($gw_goa[$v], $i+1);
+				array_push($gw_goa[$v], $j+1);
 			}
-		}else
-			break;
+			$j++;
+		}
 	}
 }
 
 $temp_result_pro = array( 0,0,0,0,0,0,0,0 );
 $gw_pro = array( [], [], [], [], [] ,[], [], [] );
 if( !empty($temp_pro_perweek) ){
-	for($i = 0; $i < 38; $i++){
-		if( isset($temp_pro_perweek[$i]) ){
+	$j = 0;
+	for($i = 0; $i < 47; $i++){
+		if( isset($temp_pro_perweek[$i]) && !in_array($i, $zeroWeeks) ){
 			foreach ($temp_pro_perweek[$i] as $v) {
 				$temp_result_pro[$v] += 1;
-				array_push($gw_pro[$v], $i+1);
+				array_push($gw_pro[$v], $j+1);
 			}
-		}else
-			break;
+			$j++;
+		}
 	}
 }
 

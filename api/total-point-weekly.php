@@ -11,8 +11,10 @@ for( $x = 0; $x < count($temp_uid); $x++){
 	$val = fread($myfile,filesize("../assets/data/".$temp_uid[$x].".json"));
 	$val = (array) json_decode($val);
 	for ($i=$startGW -1; $i < count($val); $i++) {
-		$pointWeek = (int)  $val[$i]->entry_history->total_points;
-		array_push($temp_points, $pointWeek);
+		if( !in_array($i, $zeroWeeks) ) {
+			$pointWeek = (int)  $val[$i]->entry_history->total_points;
+			array_push($temp_points, $pointWeek);
+		}
 	}
 
 	$res = array(
@@ -27,7 +29,7 @@ for( $x = 0; $x < count($temp_uid); $x++){
 
 $rest = (object) [
 	'startGW' => $startGW,
-	'currentGW' => $currentGW,
+	'currentGW' => $currentGW - count($zeroWeeks),
 	'datasets' => $datasets
 ];
 

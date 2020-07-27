@@ -2,7 +2,6 @@
 require("id.php");
 
 $datasets = array();
-
 for( $x = 0; $x < count($temp_uid); $x++){
 	$temp_points = array();
 	$temp_chips = array();
@@ -11,8 +10,10 @@ for( $x = 0; $x < count($temp_uid); $x++){
 	$val = fread($myfile,filesize("../assets/data/".$temp_uid[$x].".json"));
 	$val = (array) json_decode($val);
 	for ($i=$startGW -1; $i < count($val); $i++) {
-		array_push($temp_points, $val[$i]->entry_history->points);
-		array_push($temp_chips, $val[$i]->active_chip);
+		if( !in_array($i, $zeroWeeks) ) {
+			array_push($temp_points, $val[$i]->entry_history->points);
+			array_push($temp_chips, $val[$i]->active_chip);
+		}
 	}
 
 	$res = array(
@@ -28,7 +29,7 @@ for( $x = 0; $x < count($temp_uid); $x++){
 
 $rest = (object) [
 	'startGW' => $startGW,
-	'currentGW' => $currentGW,
+	'currentGW' => $currentGW - count($zeroWeeks),
 	'datasets' => $datasets
 ];
 

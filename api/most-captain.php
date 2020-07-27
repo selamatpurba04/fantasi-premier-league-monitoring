@@ -19,14 +19,16 @@ for( $x = 0; $x < count($temp_uid); $x++){
 
 	$tempCaptain = [];
 	for ($i=0; $i < count($val); $i++) { 
-		$picks = $val[$i]->picks;
-		foreach ($picks as $key => $value) {
-			if($value->is_captain){
-				if(!isset($tempCaptain[$value->element]))
-					$tempCaptain[$value->element] = 1;	
-				else
-					$tempCaptain[$value->element] += 1;
-				break;
+		if( !in_array($i, $zeroWeeks) ){
+			$picks = $val[$i]->picks;
+			foreach ($picks as $key => $value) {
+				if($value->is_captain){
+					if(!isset($tempCaptain[$value->element]))
+						$tempCaptain[$value->element] = 1;	
+					else
+						$tempCaptain[$value->element] += 1;
+					break;
+				}
 			}
 		}
 	}
