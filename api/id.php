@@ -45,7 +45,7 @@ $temp_barChart_color = array(
     "#ffff00",
     "#614051",
     "#9d81ba",
-    "#fffaf0",
+    "#64b381",
     "#e0ffff",
     "#9bc4e2",
     "#3d2b1f",
@@ -56,7 +56,8 @@ $temp_barChart_color = array(
     "#daa520",
     "#5d3954",
     "#6c541e",
-    "#1e4d2b"
+    "#1e4d2b",
+    "#857804"
 );
 
 // Create a stream
